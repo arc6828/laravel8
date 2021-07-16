@@ -65,15 +65,30 @@ Route::get("/gallery", function () {
     return view("test/index", compact("ant", "bird", "cat", "god", "spider"));
 });
 
-
-Route::get("/teacher" , function (){
-	return view("teacher");
+Route::get("/gallery/ant", function () {
+    $ant = "https://cdn3.movieweb.com/i/article/Oi0Q2edcVVhs4p1UivwyyseezFkHsq/1107:50/Ant-Man-3-Talks-Michael-Douglas-Update.jpg";
+    
+    return view("test/ant", compact("ant"));
 });
 
-Route::get("/student" , function (){
-	return view("student");
+
+Route::get("/teacher", function () {
+    return view("teacher");
+});
+
+Route::get("/student", function () {
+    return view("student");
 });
 
 Route::get('/table', function () {
     return view('table');
 });
+
+use App\Http\Controllers\MyProfileController;
+
+Route::get("/myprofile/create", [MyProfileController::class, "create"]);
+Route::get("/myprofile/{id}/edit", [MyProfileController::class, "edit"]);
+Route::get("/myprofile/{id}", [ MyProfileController::class , "show" ]);
+
+Route::get( "/newgallery" , [ MyProfileController::class , "gallery" ] );
+Route::get( "/newgallery/ant" , [ MyProfileController::class , "ant" ] );
