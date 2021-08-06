@@ -96,10 +96,16 @@ Route::get( "/newgallery/ant" , [ MyProfileController::class , "ant" ] );
 Route::get( "/coronavirus" , [ MyProfileController::class , "coronavirus" ] );
 
 use App\Http\Controllers\Covid19Controller;
+Route::resource('/covid19', Covid19Controller::class );
 
-Route::get("/covid19/create",[ Covid19Controller::class , "create" ]);
-Route::get("/covid19/{id}/edit", [ Covid19Controller::class , "edit" ]);
-Route::get('/covid19', [ Covid19Controller::class,"index" ]);
-Route::get('/covid19/{id}',[ Covid19Controller::class,'show' ]);
-Route::post("/covid19",[ Covid19Controller::class , "store" ]);
-Route::patch("/covid19/{id}", [ Covid19Controller::class , "update" ]);
+// Route::get("/covid19/create",[ Covid19Controller::class , "create" ]);
+// Route::get("/covid19/{id}/edit", [ Covid19Controller::class , "edit" ]);
+// Route::get('/covid19', [ Covid19Controller::class,"index" ]);
+// Route::get('/covid19/{id}',[ Covid19Controller::class,'show' ]);
+// Route::post("/covid19",[ Covid19Controller::class , "store" ]);
+// Route::patch("/covid19/{id}", [ Covid19Controller::class , "update" ]);
+// Route::delete('/covid19/{id}', [ Covid19Controller::class , 'destroy' ]);
+
+
+use App\Http\Controllers\StaffController;
+Route::resource('/staff', StaffController::class );
