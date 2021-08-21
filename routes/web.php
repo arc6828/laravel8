@@ -109,3 +109,7 @@ Route::resource('/covid19', Covid19Controller::class );
 
 use App\Http\Controllers\StaffController;
 Route::resource('/staff', StaffController::class );
+
+// Route::resource('post', 'PostController'); //ยกเลิกการใช้งานเพราะเป็นวิธีการ v.6 / v.7
+use App\Http\Controllers\PostController;  //เขียนเพิ่ม
+Route::resource('post', PostController::class); //แก้ไขเพิ่ม
