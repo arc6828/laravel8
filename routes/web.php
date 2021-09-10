@@ -70,3 +70,16 @@ Route::resource('/staff', StaffController::class);
 // Route::resource('post', 'PostController'); //ยกเลิกการใช้งานเพราะเป็นวิธีการ v.6 / v.7
 use App\Http\Controllers\PostController;  //เขียนเพิ่ม
 Route::resource('post', PostController::class); //แก้ไขเพิ่ม
+
+
+// Route::resource('profile', 'ProfileController');
+// Route::resource('user', 'UserController');
+// Route::resource('vehicle', 'VehicleController');
+
+use App\Http\Controllers\ProfileController;  //เขียนเพิ่ม
+use App\Http\Controllers\UserController;  //เขียนเพิ่ม
+use App\Http\Controllers\VehicleController;  //เขียนเพิ่ม
+
+Route::resource('profile', ProfileController::class);
+Route::resource('user', UserController::class);
+Route::resource('vehicle', VehicleController::class);
