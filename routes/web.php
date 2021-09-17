@@ -83,3 +83,17 @@ use App\Http\Controllers\VehicleController;  //เขียนเพิ่ม
 Route::resource('profile', ProfileController::class);
 Route::resource('user', UserController::class);
 Route::resource('vehicle', VehicleController::class);
+
+// Route::resource('order', 'OrderController');
+// Route::resource('payment', 'PaymentController');
+// Route::resource('order-product', 'OrderProductController');
+// Route::resource('product', 'ProductController');
+
+use App\Http\Controllers\OrderController;  //เขียนเพิ่ม
+use App\Http\Controllers\PaymentController;  //เขียนเพิ่ม
+use App\Http\Controllers\OrderProductController;  //เขียนเพิ่ม
+use App\Http\Controllers\ProductController;  //เขียนเพิ่ม
+Route::resource('order', OrderController::class);
+Route::resource('payment', PaymentController::class);
+Route::resource('order-product', OrderProductController::class);
+Route::resource('product', ProductController::class);
