@@ -70,7 +70,7 @@
 
                     <div class="row">
                         @foreach($product as $item)
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <div class="card">
                                 <img src="{{ url('storage/'.$item->photo )}}" class="card-img-top" alt="...">
                                 <div class="card-body">

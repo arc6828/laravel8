@@ -14,10 +14,10 @@ class Product extends Model
     protected $table = 'products';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,5 +27,8 @@ class Product extends Model
      */
     protected $fillable = ['title', 'content', 'price', 'cost', 'photo', 'quantity'];
 
-    
+    public function order_products()
+    {
+        return $this->hasMany(OrderProduct::class, 'product_id', 'id');
+    }
 }

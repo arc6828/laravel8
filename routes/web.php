@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth','role:admin,teacher'])->group(function () {
+Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
     Route::get("/teacher", function () {
         return view("teacher");
     });
@@ -93,7 +93,10 @@ use App\Http\Controllers\OrderController;  //เขียนเพิ่ม
 use App\Http\Controllers\PaymentController;  //เขียนเพิ่ม
 use App\Http\Controllers\OrderProductController;  //เขียนเพิ่ม
 use App\Http\Controllers\ProductController;  //เขียนเพิ่ม
-Route::resource('order', OrderController::class);
-Route::resource('payment', PaymentController::class);
-Route::resource('order-product', OrderProductController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('order', OrderController::class);
+    Route::resource('payment', PaymentController::class);
+    Route::resource('order-product', OrderProductController::class);
+});
 Route::resource('product', ProductController::class);
