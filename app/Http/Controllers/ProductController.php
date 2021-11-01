@@ -7,6 +7,7 @@ use App\Http\Requests;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PDF;
 
 class ProductController extends Controller
 {
@@ -54,9 +55,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
@@ -104,9 +105,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
@@ -129,5 +130,14 @@ class ProductController extends Controller
         Product::destroy($id);
 
         return redirect('product')->with('flash_message', 'Product deleted!');
+    }
+
+    public function pdf_index()
+    {
+        // echo "helelo";
+        $data = ["a" => "...", "b" => "..."];
+        $pdf = PDF::loadView('test_pdf', $data);
+        return $pdf->stream('test.pdf'); //แบบนี้จะ stream มา preview
+        //return $pdf->download('test.pdf'); //แบบนี้จะดาวโหลดเลย
     }
 }

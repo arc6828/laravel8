@@ -99,4 +99,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payment', PaymentController::class);
     Route::resource('order-product', OrderProductController::class);
 });
+Route::get('/product/pdf', [ ProductController::class , 'pdf_index' ] );
 Route::resource('product', ProductController::class);
+

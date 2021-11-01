@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Payment;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -38,9 +39,13 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('payment.create');
+        //อ่านค่า order_id จาก url
+        $order_id  = $request->get('order_id');
+        //query order จาก db ด้วย order_id ถ้าไม่มี order แสดง Not found
+        $order = Order::findOrFail($order_id);
+        return view('payment.create', compact('order'));
     }
 
     /**
@@ -52,12 +57,20 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-                if ($request->hasFile('slip')) {
+        if ($request->hasFile('slip')) {
             $requestData['slip'] = $request->file('slip')
                 ->store('uploads', 'public');
         }
+        //update order status เป็น checking
+        Order::where('id', $requestData['order_id'])
+            ->update([
+                'status' => 'checking',
+                'checking_at' => date("Y-m-d H:i:s"), //timestamp ปัจจุบัน
+            ]);
+
+
 
         Payment::create($requestData);
 
@@ -102,9 +115,9 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-                if ($request->hasFile('slip')) {
+        if ($request->hasFile('slip')) {
             $requestData['slip'] = $request->file('slip')
                 ->store('uploads', 'public');
         }
