@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // https://laracasts.com/discuss/channels/laravel/laravel-8-force-https-middleware-failed
+        if($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }        
     }
 }
