@@ -93,6 +93,7 @@ use App\Http\Controllers\OrderController;  //เขียนเพิ่ม
 use App\Http\Controllers\PaymentController;  //เขียนเพิ่ม
 use App\Http\Controllers\OrderProductController;  //เขียนเพิ่ม
 use App\Http\Controllers\ProductController;  //เขียนเพิ่ม
+use App\Models\Tambon;
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('order', OrderController::class);
@@ -101,4 +102,11 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::get('/product/pdf', [ ProductController::class , 'pdf_index' ] );
 Route::resource('product', ProductController::class);
+
+Route::get('/tambon', function () {
+    $provinces = Tambon::select('province')->distinct()->get();
+    $amphoes = Tambon::select('amphoe')->distinct()->get();
+    $tambons = Tambon::select('tambon')->distinct()->get();
+    return view("tambon/index", compact('provinces','amphoes','tambons'));
+});
 
