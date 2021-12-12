@@ -1,3 +1,7 @@
+@extends("inheritance/theme")
+@section("title" , "Student" )
+@section("content")
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -179,3 +183,6 @@
         </tr>
     </tbody>
 </table>
+
+
+@endsection

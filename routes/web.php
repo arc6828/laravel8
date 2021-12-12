@@ -24,15 +24,32 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
-    Route::get("/teacher", function () {
-        return view("teacher");
-    });
 });
 
-
-
+// Route ต้นแบบ
+Route::get("/teacher", function () {
+    return view("teacher");
+});
 Route::get("/student", function () {
     return view("student");
+});
+Route::get("/theme", function () {
+    return view("theme");
+});
+// Route Template Inheritance
+Route::get("/teacher/inheritance", function () {
+    return view("teacher-inheritance");
+});
+Route::get("/student/inheritance/", function () {
+    return view("student-inheritance");
+});
+
+// Route Template Component
+Route::get("/teacher/component", function () {
+    return view("teacher-component");
+});
+Route::get("/student/component", function () {
+    return view("student-component");
 });
 
 Route::get('/table', function () {
@@ -100,13 +117,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payment', PaymentController::class);
     Route::resource('order-product', OrderProductController::class);
 });
-Route::get('/product/pdf', [ ProductController::class , 'pdf_index' ] );
+Route::get('/product/pdf', [ProductController::class, 'pdf_index']);
 Route::resource('product', ProductController::class);
 
 Route::get('/tambon', function () {
     $provinces = Tambon::select('province')->distinct()->get();
     $amphoes = Tambon::select('amphoe')->distinct()->get();
     $tambons = Tambon::select('tambon')->distinct()->get();
-    return view("tambon/index", compact('provinces','amphoes','tambons'));
+    return view("tambon/index", compact('provinces', 'amphoes', 'tambons'));
 });
-
