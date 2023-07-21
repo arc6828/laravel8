@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -11,9 +13,29 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // GET SEARCH KEYWORD
+        $keyword = $request->get('search');
+        // DEFINE ITEM PER PAGE
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            //CASE SEARCH, show some
+            $product = Product::where('title', 'LIKE', "%$keyword%")
+                // ->orWhere('content', 'LIKE', "%$keyword%")
+                // ->orWhere('price', 'LIKE', "%$keyword%")
+                // ->orWhere('cost', 'LIKE', "%$keyword%")
+                // ->orWhere('photo', 'LIKE', "%$keyword%")
+                // ->orWhere('stock', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            // CASE NOT SEARCH, show all
+            $product = Product::latest()->paginate($perPage);
+        }
+
+        return view('products.index', compact('products'));
+        // return view('products.index',compact('products'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -23,7 +45,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // 
+        return view('products.create');
     }
 
     /**
@@ -34,7 +57,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'photo' => 'required',
+        ]);
+
+        // GET ALL DATA SUBMIT FROM <form></form>
+        $requestData = $request->all();
+
+        // FOR UPLOAD
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('', 'public');
+            $requestData['photo'] = Storage::url($path);
+        }
+
+        //CREATE A RECORD
+        Product::create($requestData);
+
+        return redirect('product')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -45,7 +87,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        //QUERY by id
+        $product = Product::findOrFail($id);
+        
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -56,7 +101,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        //QUERY by id
+        $product = Product::findOrFail($id);
+        
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -69,6 +117,27 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //validation
+        $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'photo' => 'required',
+        ]);
+
+        // GET ALL DATA SUBMIT FROM <form></form>
+        $requestData = $request->all();
+
+        // FOR UPLOAD A NEW FILE WITHOUT DELETE THE OLD FILE
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('', 'public');
+            $requestData['photo'] = Storage::url($path);
+        }
+
+        //UPDATE A RECORD
+        $product = Product::findOrFail($id);
+        $product->update($requestData);
+
+        return redirect('product')->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -79,6 +148,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //DELETE by id
+        Product::destroy($id);
+
+        return redirect('product')->with('success', 'Product deleted successfully.');
     }
 }
