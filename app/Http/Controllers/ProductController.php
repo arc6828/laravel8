@@ -18,11 +18,11 @@ class ProductController extends Controller
         // GET SEARCH KEYWORD
         $keyword = $request->get('search');
         // DEFINE ITEM PER PAGE
-        $perPage = 25;
+        $perPage = 5;
 
         if (!empty($keyword)) {
             //CASE SEARCH, show some
-            $product = Product::where('title', 'LIKE', "%$keyword%")
+            $products = Product::where('title', 'LIKE', "%$keyword%")
                 // ->orWhere('content', 'LIKE', "%$keyword%")
                 // ->orWhere('price', 'LIKE', "%$keyword%")
                 // ->orWhere('cost', 'LIKE', "%$keyword%")
@@ -31,10 +31,10 @@ class ProductController extends Controller
                 ->latest()->paginate($perPage);
         } else {
             // CASE NOT SEARCH, show all
-            $product = Product::latest()->paginate($perPage);
+            $products = Product::latest()->paginate($perPage);
         }
 
-        return view('products.index', compact('products'));
+        return view('product.index', compact('products'));
         // return view('products.index',compact('products'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function create()
     {
         // 
-        return view('products.create');
+        return view('product.create');
     }
 
     /**
@@ -90,7 +90,7 @@ class ProductController extends Controller
         //QUERY by id
         $product = Product::findOrFail($id);
         
-        return view('products.show',compact('product'));
+        return view('product.show',compact('product'));
     }
 
     /**
@@ -104,7 +104,7 @@ class ProductController extends Controller
         //QUERY by id
         $product = Product::findOrFail($id);
         
-        return view('products.edit',compact('product'));
+        return view('product.edit',compact('product'));
     }
 
     /**

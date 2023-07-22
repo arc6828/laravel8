@@ -1,13 +1,8 @@
-@extends('products.layout')
-
-@section('content')
+<x-themecrud title="Products">
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Laravel 8 CRUD Example from scratch - ItSolutionStuff.com</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+        <div class="col-lg-12">
+            <div class="my-4">
+                <a class="btn btn-success" href="{{ route('product.create') }}"> Create New Product</a>
             </div>
         </div>
     </div>
@@ -18,24 +13,33 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table class="table table">
         <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Details</th>
+            <th>#</th>
+            <th>Photo</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Price</th>
+            <th>Stock</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($products as $item)
             <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->detail }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                    <img src="{{ $item->photo }}" height="100" />
 
-                        <a class="btn btn-info" href="{{ route('products.show', $product->id) }}">Show</a>
+                </td>
+                <td>{{ $item->title }}</td>
+                <td>{{ $item->content }}</td>
+                <td>{{ $item->price }}</td>
+                <td>{{ $item->stock }}</td>
+                <td>
+                    <form action="{{ route('product.destroy', $item->id) }}" method="POST">
 
-                        <a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}">Edit</a>
+                        <a class="btn btn-info" href="{{ route('product.show', $item->id) }}">Show</a>
+
+                        <a class="btn btn-primary" href="{{ route('product.edit', $item->id) }}">Edit</a>
 
                         @csrf
                         @method('DELETE')
@@ -47,5 +51,5 @@
         @endforeach
     </table>
 
-    {!! $products->links() !!}
-@endsection
+    <div class="mt-4">{{ $products->appends(['search' => request('search')])->links() }}</div>
+</x-themecrud>

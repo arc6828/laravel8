@@ -1,13 +1,8 @@
-@extends('products.layout')
-
-@section('content')
+<x-theme title="Create a product">
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Add New Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+        <div class="col-lg-12">
+            <div class="my-4">
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -23,7 +18,7 @@
         </div>
     @endif
 
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('product.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -45,4 +40,4 @@
         </div>
 
     </form>
-@endsection
+</x-theme>
