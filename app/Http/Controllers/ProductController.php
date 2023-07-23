@@ -61,7 +61,7 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required',
             'price' => 'required',
-            'photo' => 'required',
+            // 'photo' => 'required',
         ]);
 
         // GET ALL DATA SUBMIT FROM <form></form>
@@ -121,7 +121,7 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required',
             'price' => 'required',
-            'photo' => 'required',
+            // 'photo' => 'required',
         ]);
 
         // GET ALL DATA SUBMIT FROM <form></form>

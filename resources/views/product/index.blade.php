@@ -28,24 +28,23 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     <img src="{{ $item->photo }}" height="100" />
-
                 </td>
                 <td>{{ $item->title }}</td>
                 <td>{{ $item->content }}</td>
                 <td>{{ $item->price }}</td>
                 <td>{{ $item->stock }}</td>
                 <td>
-                    <form action="{{ route('product.destroy', $item->id) }}" method="POST">
-
+                    <div class="d-flex justify-content-around px-4">
                         <a class="btn btn-info" href="{{ route('product.show', $item->id) }}">Show</a>
 
                         <a class="btn btn-primary" href="{{ route('product.edit', $item->id) }}">Edit</a>
 
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                        <form action="{{ route('product.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Confirm delete?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         @endforeach
