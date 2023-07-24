@@ -1,4 +1,4 @@
-<x-themecrud title="Create a product">
+<x-bootstrap title="Create a product">
     <div class="row">
         <div class="col-lg-12">
             <div class="py-4">
@@ -47,4 +47,4 @@
         </div>
 
     </form>
-</x-themecrud>
+</x-bootstrap>
