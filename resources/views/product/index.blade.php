@@ -6,7 +6,8 @@
         <div class="col-lg-4">
             <form method="GET" action="{{ route('product.index') }}" class="form-inline">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                    <input type="text" class="form-control" name="search" placeholder="Search..."
+                        value="{{ request('search') }}">
                     <span class="input-group-append">
                         <button class="btn btn-secondary" type="submit">
                             {{-- <i class="fa fa-search"></i> --}}
@@ -36,7 +37,7 @@
         </tr>
         @foreach ($products as $item)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->id }}</td>
                 <td>
                     <img src="{{ $item->photo }}" height="100" />
                 </td>
