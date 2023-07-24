@@ -18,7 +18,7 @@ class ProductController extends Controller
         // GET SEARCH KEYWORD
         $keyword = $request->get('search');
         // DEFINE ITEM PER PAGE
-        $perPage = 5;
+        $perPage = 8;
 
         if (!empty($keyword)) {
             //CASE SEARCH, show some
@@ -35,6 +35,7 @@ class ProductController extends Controller
         }
 
         return view('product.index', compact('products'));
+        // return view('product.index2', compact('products'));
         // return view('products.index',compact('products'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
