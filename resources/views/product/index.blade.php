@@ -1,9 +1,20 @@
-<x-themecrud title="Products">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="my-4">
-                <a class="btn btn-success" href="{{ route('product.create') }}"> Create New Product</a>
-            </div>
+<x-bootstrap title="Products">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <a class="btn btn-success" href="{{ route('product.create') }}"> Create New Product</a>
+        </div>
+        <div class="col-lg-4">
+            <form method="GET" action="{{ route('product.index') }}" class="form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                    <span class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">
+                            {{-- <i class="fa fa-search"></i> --}}
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -13,7 +24,7 @@
         </div>
     @endif
 
-    <table class="table table">
+    <table class="table my-4">
         <tr>
             <th>#</th>
             <th>Photo</th>
@@ -39,7 +50,8 @@
 
                         <a class="btn btn-primary" href="{{ route('product.edit', $item->id) }}">Edit</a>
 
-                        <form action="{{ route('product.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Confirm delete?')">
+                        <form action="{{ route('product.destroy', $item->id) }}" method="POST"
+                            onsubmit="return confirm('Confirm delete?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -51,4 +63,4 @@
     </table>
 
     <div class="mt-4">{{ $products->appends(['search' => request('search')])->links() }}</div>
-</x-themecrud>
+</x-bootstrap>
