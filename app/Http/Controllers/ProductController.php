@@ -71,7 +71,7 @@ class ProductController extends Controller
         // FOR UPLOAD
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('', 'public');
-            $requestData['photo'] = Storage::url($path);
+            $requestData['photo'] = url(Storage::url($path));
         }
 
         //CREATE A RECORD
@@ -90,8 +90,8 @@ class ProductController extends Controller
     {
         //QUERY by id
         $product = Product::findOrFail($id);
-        
-        return view('product.show',compact('product'));
+
+        return view('product.show', compact('product'));
     }
 
     /**
@@ -104,8 +104,8 @@ class ProductController extends Controller
     {
         //QUERY by id
         $product = Product::findOrFail($id);
-        
-        return view('product.edit',compact('product'));
+
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -131,7 +131,7 @@ class ProductController extends Controller
         // FOR UPLOAD A NEW FILE WITHOUT DELETE THE OLD FILE
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('', 'public');
-            $requestData['photo'] = Storage::url($path);
+            $requestData['photo'] = url(Storage::url($path));
         }
 
         //UPDATE A RECORD
