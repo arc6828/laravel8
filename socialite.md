@@ -1,16 +1,29 @@
-# How to make authentication with Social media like Google, Facebook, Line
+# How to make authentication with Social media like Google
 
 ## Reference
 https://laravel.com/docs/8.x/socialite
 https://socialiteproviders.com/
 https://www.hibit.dev/posts/59/social-authentication-with-laravel-socialite
 
+## Before you try socialite you should implemenation at least basic authentication like breeze.
 
+- backup your file : routes/web.php (breeze will try to clear your content in web.php)
+
+- for laravel 8
+```bash
+php artisan migrate
+composer require laravel/breeze:1.9.2
+php artisan breeze:install
+npm install && npm run dev
+```
 
 ## Set up dependencies
 
 ```bash
+# core
 composer require laravel/socialite
+# provider(s) you need
+composer require socialiteproviders/google
 ```
 
 ## Make some configuations
@@ -18,9 +31,12 @@ composer require laravel/socialite
 - .env
 
 ```env
+APP_URL=http://localhost:8000
+
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
-GOOGLE_REDIRECT_URI="http://example.com/callback-url"
+# GOOGLE_REDIRECT_URI="http://example.com/callback-url"
+GOOGLE_REDIRECT_URI="auth/google/callbacke"
 ```
 
 - config/services.php
@@ -33,9 +49,37 @@ GOOGLE_REDIRECT_URI="http://example.com/callback-url"
 ],
 ```
 
+- app/Providers/EventServiceProvider.php
+```php
+protected $listen = [
+    Registered::class => [
+        SendEmailVerificationNotification::class,
+    ],
+    \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+        // ... other providers
+        \SocialiteProviders\Google\GoogleExtendSocialite::class.'@handle',
+    ],
+];
+
+```
+- config/app.php
+
+```php
+'providers' => [
+    ...
+
+    // Insert this line 
+    SocialiteProviders\Manager\ServiceProvider::class,
+
+],
+```
+
+- Close and Restart your VS Code
+- php artisan config:cache
+
 ## Write some code
 
-- auth/login.blade.php
+- auth/login.blade.php : insert code before submit button
 
 ```php
 {{-- social button --}}

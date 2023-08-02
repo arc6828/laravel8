@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,22 +35,50 @@ Route::get('/', function () {
 // Route::patch("/product/{id}", [ProductController::class, "update"])->name('product.update');
 // Route::delete("/product/{id}", [ProductController::class, "destroy"])->name('product.destroy');
 
-Route::resource('/product', ProductController::class );
+Route::resource('/product', ProductController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-use Laravel\Socialite\Facades\Socialite;
- 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
+// use Socialite;
+
+Route::get('/auth/{provider}/redirect', function ($provider) {
+    return Socialite::driver($provider)->redirect();
 });
- 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
- 
+
+Route::get('/auth/{provider}/callback', function ($provider) {
+    $providerUser = Socialite::driver($provider)->user();
     // $user->token
+    switch ($provider) {
+        case "google":
+            // $user = User::where('provider_id', $providerUser->id)->first();
+            $user = User::where('email', $providerUser->email)->first();
+
+            if ($user) {
+                $user->update([
+                    // 'provider_token' => $providerUser->token,
+                    // 'provider_refresh_token' => $providerUser->refreshToken,
+                ]);
+            } else {
+                $user = User::create([
+                    'name' => $providerUser->name,
+                    'email' => $providerUser->email,
+                    'password' => Hash::make(Str::random(16)),
+                    // 'provider_id' => $providerUser->id,
+                    // 'provider_token' => $providerUser->token,
+                    // 'provider_refresh_token' => $providerUser->refreshToken,
+                ]);
+            }
+
+            // Auth::login($user);
+            Auth::login($user, $remember = true);
+
+            break;
+    }
+
+
+    return redirect('/dashboard');
 });

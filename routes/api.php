@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::post('/sanctum/token',  function (Request $request) {
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        // throw ValidationException::withMessages(
+        return [
+            'email' => ['The provided credentials are incorrect.'],
+        ];
+        // );
+    }
+
+    return ['token' => $user->createToken($request->device_name)->plainTextToken];
 });

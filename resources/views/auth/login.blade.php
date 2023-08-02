@@ -43,9 +43,9 @@
             {{-- social button --}}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
             <div class="flex justify-center mt-4">
-                <a href="{{ url('login/google') }}" style="padding: 10px;"><i class="bi bi-google"></i></a>
-                <a href="{{ url('login/facebook') }}" style="padding: 10px;"><i class="bi bi-facebook"></i></a>
-                <a href="{{ url('login/line') }}" style="padding: 10px;"><i class="bi bi-line"></i></a>
+                <a href="{{ url('auth/google/redirect') }}" style="padding: 10px;"><i class="bi bi-google"></i></a>
+                <a href="{{ url('auth/facebook/redirect') }}" style="padding: 10px;"><i class="bi bi-facebook"></i></a>
+                <a href="{{ url('auth/line/redirect') }}" style="padding: 10px;"><i class="bi bi-line"></i></a>
             </div>
             {{-- social button end --}}
 
