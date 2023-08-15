@@ -36,7 +36,7 @@ APP_URL=http://localhost:8000
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 # GOOGLE_REDIRECT_URI="http://example.com/callback-url"
-GOOGLE_REDIRECT_URI="auth/google/callbacke"
+GOOGLE_REDIRECT_URI="auth/google/callback"
 ```
 
 - config/services.php
