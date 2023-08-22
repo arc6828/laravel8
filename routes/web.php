@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -82,3 +83,6 @@ Route::get('/auth/{provider}/callback', function ($provider) {
 
     return redirect('/dashboard');
 });
+
+// Route::resource('post', 'PostController');
+Route::resource('post', PostController::class);
