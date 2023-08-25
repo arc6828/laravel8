@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QuotationController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -86,3 +87,4 @@ Route::get('/auth/{provider}/callback', function ($provider) {
 
 // Route::resource('post', 'PostController');
 Route::resource('post', PostController::class);
+Route::resource('quotation', QuotationController::class);
