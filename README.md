@@ -28,8 +28,16 @@ mysqldump -u username -p laravel > laravel.sql
 ```
 
 ## dependencies for support 
+
+### migration generator
+when you have exist database but does not have migrations
 https://github.com/bennett-treptow/laravel-migration-generator?ref=laravelnews#example-usage
+```bash
 composer require --dev bennett-treptow/laravel-migration-generator
+php artisan vendor:publish --provider="LaravelMigrationGenerator\LaravelMigrationGeneratorProvider"
+php artisan generate:migrations --path=database/migrations2
+```
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
