@@ -3,7 +3,7 @@
         { "name": "title", "type": "string" },
         { "name": "content", "type": "text" },
         { "name": "price", "type": "float" },
-        { "name": "photo", "type": "string" },
+        { "name": "photo", "type": "file" },
         { "name": "stock", "type": "integer" }
     ]
 }

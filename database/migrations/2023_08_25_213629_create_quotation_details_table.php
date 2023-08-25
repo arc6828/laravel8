@@ -21,7 +21,7 @@ class CreateQuotationDetailsTable extends Migration
             $table->text('remark')->nullable();
             $table->integer('quotation_id')->nullable();
             $table->integer('product_id')->nullable();
-            });
+        });
     }
 
     /**

@@ -15,13 +15,13 @@ class ProductFactory extends Factory
     {
         return [
             //
+            // 'title' => $this->faker->word(),
             'title' => $this->faker->sentence(3),
-            'content' => $this->faker->paragraph(4),
+            'content' => $this->faker->text(),
             'price' => $this->faker->randomFloat(2, 10, 100),
-            'photo' => $this->faker->image('public/storage', 200, 200, "books", false),
+            // 'photo' => $this->faker->image('public/storage', 200, 200, "books", false),
+            'photo' => $this->faker->imageUrl(640, 480, 'furnitures', true),
             'stock' => $this->faker->numberBetween(0, 100),
-            'created_at' => now(),
-            'updated_at' => now(),
         ];
     }
 }
