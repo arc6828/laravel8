@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Quotation;
+use App\Models\QuotationDetail;
 use Illuminate\Http\Request;
 
-class QuotationController extends Controller
+class QuotationDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,19 +21,17 @@ class QuotationController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $quotation = Quotation::where('remark', 'LIKE', "%$keyword%")
-                ->orWhere('vat_percent', 'LIKE', "%$keyword%")
-                ->orWhere('vat', 'LIKE', "%$keyword%")
-                ->orWhere('sub_total', 'LIKE', "%$keyword%")
-                ->orWhere('net_total', 'LIKE', "%$keyword%")
-                ->orWhere('customer_id', 'LIKE', "%$keyword%")
-                ->orWhere('user_id', 'LIKE', "%$keyword%")
+            $quotationdetail = QuotationDetail::where('amount', 'LIKE', "%$keyword%")
+                ->orWhere('price', 'LIKE', "%$keyword%")
+                ->orWhere('remark', 'LIKE', "%$keyword%")
+                ->orWhere('quotation_id', 'LIKE', "%$keyword%")
+                ->orWhere('product_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $quotation = Quotation::latest()->paginate($perPage);
+            $quotationdetail = QuotationDetail::latest()->paginate($perPage);
         }
 
-        return view('quotation.index', compact('quotation'));
+        return view('quotation-detail.index', compact('quotationdetail'));
     }
 
     /**
@@ -43,7 +41,7 @@ class QuotationController extends Controller
      */
     public function create()
     {
-        return view('quotation.create');
+        return view('quotation-detail.create');
     }
 
     /**
@@ -58,9 +56,9 @@ class QuotationController extends Controller
         
         $requestData = $request->all();
         
-        Quotation::create($requestData);
+        QuotationDetail::create($requestData);
 
-        return redirect('quotation')->with('flash_message', 'Quotation added!');
+        return redirect('quotation-detail')->with('flash_message', 'QuotationDetail added!');
     }
 
     /**
@@ -72,9 +70,9 @@ class QuotationController extends Controller
      */
     public function show($id)
     {
-        $quotation = Quotation::findOrFail($id);
+        $quotationdetail = QuotationDetail::findOrFail($id);
 
-        return view('quotation.show', compact('quotation'));
+        return view('quotation-detail.show', compact('quotationdetail'));
     }
 
     /**
@@ -86,9 +84,9 @@ class QuotationController extends Controller
      */
     public function edit($id)
     {
-        $quotation = Quotation::findOrFail($id);
+        $quotationdetail = QuotationDetail::findOrFail($id);
 
-        return view('quotation.edit', compact('quotation'));
+        return view('quotation-detail.edit', compact('quotationdetail'));
     }
 
     /**
@@ -104,10 +102,10 @@ class QuotationController extends Controller
         
         $requestData = $request->all();
         
-        $quotation = Quotation::findOrFail($id);
-        $quotation->update($requestData);
+        $quotationdetail = QuotationDetail::findOrFail($id);
+        $quotationdetail->update($requestData);
 
-        return redirect('quotation')->with('flash_message', 'Quotation updated!');
+        return redirect('quotation-detail')->with('flash_message', 'QuotationDetail updated!');
     }
 
     /**
@@ -119,8 +117,8 @@ class QuotationController extends Controller
      */
     public function destroy($id)
     {
-        Quotation::destroy($id);
+        QuotationDetail::destroy($id);
 
-        return redirect('quotation')->with('flash_message', 'Quotation deleted!');
+        return redirect('quotation-detail')->with('flash_message', 'QuotationDetail deleted!');
     }
 }

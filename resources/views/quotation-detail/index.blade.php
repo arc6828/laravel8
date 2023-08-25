@@ -3,16 +3,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Quotation</div>
+                    <div class="card-header">Quotationdetail</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-9">
-                                <a href="{{ url('/quotation/create') }}" class="btn btn-success btn-sm" title="Add New Quotation">
+                                <a href="{{ url('/quotation-detail/create') }}" class="btn btn-success btn-sm" title="Add New QuotationDetail">
                                     <i class="fa fa-plus" aria-hidden="true"></i> Add New
                                 </a>
                             </div>
                             <div class="col-lg-3">
-                                <form method="GET" action="{{ url('/quotation') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                                <form method="GET" action="{{ url('/quotation-detail') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                                         <span class="input-group-append">
@@ -31,29 +31,29 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Remark</th><th>Vat Percent</th><th>Vat</th><th>Sub Total</th><th>Net Total</th><th>Customer Id</th><th>User Id</th><th>Actions</th>
+                                        <th>#</th><th>Amount</th><th>Price</th><th>Remark</th><th>Quotation Id</th><th>Product Id</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($quotation as $item)
+                                @foreach($quotationdetail as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->remark }}</td><td>{{ $item->vat_percent }}</td><td>{{ $item->vat }}</td><td>{{ $item->sub_total }}</td><td>{{ $item->net_total }}</td><td>{{ $item->customer_id }}</td><td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->amount }}</td><td>{{ $item->price }}</td><td>{{ $item->remark }}</td><td>{{ $item->quotation_id }}</td><td>{{ $item->product_id }}</td>
                                         <td>
-                                            <a href="{{ url('/quotation/' . $item->id) }}" title="View Quotation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/quotation/' . $item->id . '/edit') }}" title="Edit Quotation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/quotation-detail/' . $item->id) }}" title="View QuotationDetail"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/quotation-detail/' . $item->id . '/edit') }}" title="Edit QuotationDetail"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/quotation' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/quotation-detail' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Quotation" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete QuotationDetail" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $quotation->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $quotationdetail->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>
