@@ -16,11 +16,12 @@ class CreateQuotationDetailsTable extends Migration
         Schema::create('quotation_details', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('amount')->nullable();
-            $table->float('price')->nullable();
-            $table->text('remark')->nullable();
             $table->integer('quotation_id')->nullable();
             $table->integer('product_id')->nullable();
+            $table->integer('amount')->nullable();
+            $table->float('price')->nullable();
+            $table->float('total')->nullable();
+            $table->text('remark')->nullable();
         });
     }
 

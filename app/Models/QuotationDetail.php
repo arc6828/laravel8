@@ -27,7 +27,15 @@ class QuotationDetail extends Model
      *
      * @var array
      */
-    protected $fillable = ['amount', 'price', 'remark', 'quotation_id', 'product_id'];
+    protected $fillable = ['amount', 'price','total', 'remark', 'quotation_id', 'product_id'];
 
-    
+    public function quotation()
+    {
+        return $this->belongsTo(Quotation::class,'quotation_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class,'product_id');
+    }
 }

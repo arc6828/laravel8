@@ -16,10 +16,10 @@ class Quotation extends Model
     protected $table = 'quotations';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -29,5 +29,18 @@ class Quotation extends Model
      */
     protected $fillable = ['remark', 'vat_percent', 'vat', 'sub_total', 'net_total', 'customer_id', 'user_id'];
 
-    
+    public function quotationDetails()
+    {
+        return $this->hasMany(QuotationDetail::class, 'quotation_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

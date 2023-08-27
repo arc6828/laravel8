@@ -15,10 +15,14 @@ class QuotationDetailFactory extends Factory
      */
     public function definition()
     {
+        $amount = $this->faker->numberBetween(1, 3);
+        $price = $this->faker->numberBetween(100, 100);
+        $total = $amount * $price;
         return [
             //
-            'amount' => $this->faker->numberBetween(1, 3),
-            'price' => $this->faker->numberBetween(100, 1000),
+            'amount' => $amount,
+            'price' => $price,
+            'total' => $total,
             'remark' => "",
             'quotation_id' => Quotation::factory(),
             'product_id' => Product::factory(),

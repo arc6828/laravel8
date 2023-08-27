@@ -90,6 +90,8 @@ Route::get('/auth/{provider}/callback', function ($provider) {
 // Route::resource('post', 'PostController');
 Route::resource('post', PostController::class);
 
-Route::resource('customer', CustomerController::class);
-Route::resource('quotation', QuotationController::class);
-Route::resource('quotation-detail', QuotationDetailController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('customer', CustomerController::class);
+    Route::resource('quotation', QuotationController::class);
+    Route::resource('quotation-detail', QuotationDetailController::class);
+});

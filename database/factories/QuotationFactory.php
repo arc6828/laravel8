@@ -17,7 +17,7 @@ class QuotationFactory extends Factory
     {
         return [
             //            
-            'remark' => $this->faker->text(),
+            'remark' => "",
             'vat_percent' => 7,
             'vat' => null,
             'sub_total' => null,

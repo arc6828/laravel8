@@ -29,5 +29,8 @@ class Customer extends Model
      */
     protected $fillable = ['name', 'organization_name', 'address', 'phone', 'email', 'remark', 'user_id'];
 
-    
+    public function quotation()
+    {
+        return $this->belongsTo(Quotation::class,'quotation_id');
+    }
 }

@@ -13,4 +13,7 @@ class Product extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['title', 'content', 'price', 'photo', 'stock'];
 
+    public function quotation_deatils(){
+        return $this->hasMany(QuotationDetail::class,'product_id');
+    }
 }

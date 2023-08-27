@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Product;
 use App\Models\QuotationDetail;
 use Illuminate\Http\Request;
 
@@ -41,7 +41,8 @@ class QuotationDetailController extends Controller
      */
     public function create()
     {
-        return view('quotation-detail.create');
+        $products = Product::get();
+        return view('quotation-detail.create', compact('products'));
     }
 
     /**
@@ -53,12 +54,14 @@ class QuotationDetailController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+        $requestData['total'] = $requestData['amount'] * $requestData['price'];
+
         QuotationDetail::create($requestData);
 
-        return redirect('quotation-detail')->with('flash_message', 'QuotationDetail added!');
+        // return redirect('quotation-detail')->with('flash_message', 'QuotationDetail added!');
+        return redirect()->route('quotation.show', $requestData['quotation_id']);
     }
 
     /**
@@ -85,8 +88,10 @@ class QuotationDetailController extends Controller
     public function edit($id)
     {
         $quotationdetail = QuotationDetail::findOrFail($id);
+        
+        $products = Product::get();
 
-        return view('quotation-detail.edit', compact('quotationdetail'));
+        return view('quotation-detail.edit', compact('quotationdetail','products'));
     }
 
     /**
@@ -99,13 +104,14 @@ class QuotationDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+        $requestData['total'] = $requestData['amount'] * $requestData['price'];
         $quotationdetail = QuotationDetail::findOrFail($id);
         $quotationdetail->update($requestData);
 
-        return redirect('quotation-detail')->with('flash_message', 'QuotationDetail updated!');
+        // return redirect('quotation-detail')->with('flash_message', 'QuotationDetail updated!');
+        return redirect()->route('quotation.show', $requestData['quotation_id']);
     }
 
     /**
@@ -117,8 +123,11 @@ class QuotationDetailController extends Controller
      */
     public function destroy($id)
     {
+        $quotationdetail = QuotationDetail::findOrFail($id);
+        $quotation_id = $quotationdetail->quotation_id;
         QuotationDetail::destroy($id);
 
-        return redirect('quotation-detail')->with('flash_message', 'QuotationDetail deleted!');
+        // return redirect('quotation-detail')->with('flash_message', 'QuotationDetail deleted!');
+        return redirect()->route('quotation.show', $quotation_id);
     }
 }

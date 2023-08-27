@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Customer;
 use App\Models\Quotation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class QuotationController extends Controller
@@ -43,7 +44,9 @@ class QuotationController extends Controller
      */
     public function create()
     {
-        return view('quotation.create');
+        $users = User::get();
+        $customers = Customer::get();
+        return view('quotation.create', compact('users', 'customers'));
     }
 
     /**
@@ -55,9 +58,9 @@ class QuotationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Quotation::create($requestData);
 
         return redirect('quotation')->with('flash_message', 'Quotation added!');
@@ -87,8 +90,10 @@ class QuotationController extends Controller
     public function edit($id)
     {
         $quotation = Quotation::findOrFail($id);
+        $users = User::get();
+        $customers = Customer::get();
 
-        return view('quotation.edit', compact('quotation'));
+        return view('quotation.edit', compact('quotation','users','customers'));
     }
 
     /**
@@ -101,9 +106,9 @@ class QuotationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $quotation = Quotation::findOrFail($id);
         $quotation->update($requestData);
 
