@@ -6,11 +6,25 @@
                     <div class="card-header">Quotation {{ $quotation->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/quotation') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/quotation/' . $quotation->id . '/edit') }}" title="Edit Quotation"><button
-                                class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Edit</button></a>
+                        <a href="{{ url('/quotation') }}" title="Back">
+                            <button class="btn btn-warning btn-sm">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+                            </button>
+                        </a>
+                        <a href="{{ url('/quotation/' . $quotation->id . '/edit') }}" title="Edit Quotation">
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                            </button>
+                        </a>
+                        <a href="{{ url('/quotation/' . $quotation->id . '/pdf') }}" title="PDF">
+                            <button class="btn btn-success btn-sm">
+                                <i class="fa fa-file" aria-hidden="true"></i> PDF
+                            </button>
+                        </a>
+                        <button class="btn btn-secondary btn-sm" onclick="window.print();">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                            พิมพ์หน้านี้
+                        </button>
 
                         <form method="POST" action="{{ url('quotation' . '/' . $quotation->id) }}"
                             accept-charset="UTF-8" style="display:inline">
@@ -39,7 +53,7 @@
                                     <tr>
                                         <th>ID</th>
                                         {{-- <td>{{ $quotation->id }}</td> --}}
-                                        <td>{{ sprintf("Q%03d",$quotation->id) }}</td>
+                                        <td>{{ sprintf('Q%03d', $quotation->id) }}</td>
                                     </tr>
                                     <tr>
                                         <th> Customer Id </th>
@@ -111,9 +125,9 @@
                                             <td>{{ $item->total }}</td>
                                             <td>{{ $item->remark }}</td>
                                             <td>
-                                                <a href="{{ url('/quotation-detail/' . $item->id) }}"
+                                                {{-- <a href="{{ url('/quotation-detail/' . $item->id) }}"
                                                     title="View QuotationDetail"><button class="btn btn-info btn-sm"><i
-                                                            class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                                            class="fa fa-eye" aria-hidden="true"></i> View</button></a> --}}
                                                 <a href="{{ url('/quotation-detail/' . $item->id . '/edit') }}"
                                                     title="Edit QuotationDetail"><button
                                                         class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
@@ -138,8 +152,8 @@
                         </div>
 
                         <div class="text-center">
-                            <a href="{{ url('/quotation-detail/create') }}?quotation_id={{ $quotation->id }}" class="btn btn-success btn-sm"
-                                title="Add New QuotationDetail">
+                            <a href="{{ url('/quotation-detail/create') }}?quotation_id={{ $quotation->id }}"
+                                class="btn btn-success btn-sm" title="Add New QuotationDetail">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Add New
                             </a>
                         </div>
