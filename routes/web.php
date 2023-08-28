@@ -102,6 +102,7 @@ Route::get('/test/pdf', function(){
     $a = "hello";
     $b = "world";
     $c = "วันจันทร์";
-    $pdf = Pdf::loadView('pdf', compact('a','b','c'));
+    $pdf = Pdf::loadView('testpdf', compact('a','b','c'));
     return $pdf->stream('test.pdf');
+    // return view('testpdf', compact('a','b','c'));
 });
