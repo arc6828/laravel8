@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Create New QuotationDetail</div>
                     <div class="card-body">
-                        <a href="{{ url('/quotation-detail') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ route('quotation.show', request('quotation_id') ) }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 

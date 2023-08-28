@@ -38,7 +38,8 @@
                                 <tbody>
                                     <tr>
                                         <th>ID</th>
-                                        <td>{{ $quotation->id }}</td>
+                                        {{-- <td>{{ $quotation->id }}</td> --}}
+                                        <td>{{ sprintf("Q%03d",$quotation->id) }}</td>
                                     </tr>
                                     <tr>
                                         <th> Customer Id </th>
