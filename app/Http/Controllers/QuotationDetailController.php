@@ -88,10 +88,10 @@ class QuotationDetailController extends Controller
     public function edit($id)
     {
         $quotationdetail = QuotationDetail::findOrFail($id);
-        
+
         $products = Product::get();
 
-        return view('quotation-detail.edit', compact('quotationdetail','products'));
+        return view('quotation-detail.edit', compact('quotationdetail', 'products'));
     }
 
     /**

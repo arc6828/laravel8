@@ -109,7 +109,7 @@
                                         <th>Amount</th>
                                         <th>Price</th>
                                         <th>Total</th>
-                                        <th>Remark</th>
+                                        {{-- <th>Remark</th> --}}
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -123,11 +123,11 @@
                                             <td>{{ $item->amount }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->total }}</td>
-                                            <td>{{ $item->remark }}</td>
+                                            {{-- <td>{{ $item->remark }}</td> --}}
                                             <td>
                                                 {{-- <a href="{{ url('/quotation-detail/' . $item->id) }}"
-                                                    title="View QuotationDetail"><button class="btn btn-info btn-sm"><i
-                                                            class="fa fa-eye" aria-hidden="true"></i> View</button></a> --}}
+                            title="View QuotationDetail"><button class="btn btn-info btn-sm"><i
+                                    class="fa fa-eye" aria-hidden="true"></i> View</button></a> --}}
                                                 <a href="{{ url('/quotation-detail/' . $item->id . '/edit') }}"
                                                     title="Edit QuotationDetail"><button
                                                         class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"

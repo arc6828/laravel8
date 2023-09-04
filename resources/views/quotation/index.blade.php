@@ -59,17 +59,17 @@
                                         @endphp
                                         <tr>
                                             {{-- <td>{{ $loop->iteration }}</td> --}}
-                                            <td>{{ sprintf('Q%03d', $item->id) }}</td>
                                             {{-- <td>{{ $item->customer_id }}</td> --}}
                                             {{-- <td>{{ $item->user_id }}</td> --}}
+                                            {{-- <td>{{ $item->vat }}</td> --}}
+                                            {{-- <td>{{ $item->sub_total }}</td> --}}
+                                            {{-- <td>{{ $item->net_total }}</td> --}}
+                                            <td>{{ sprintf('Q%03d', $item->id) }}</td>
                                             <td>{{ $item->customer->name }}</td>
                                             <td>{{ $item->user->name }}</td>
                                             <td>{{ $item->vat_percent }}%</td>
-                                            {{-- <td>{{ $item->vat }}</td> --}}
                                             <td>{{ $vat }}</td>
-                                            {{-- <td>{{ $item->sub_total }}</td> --}}
                                             <td>{{ $sub_total }}</td>
-                                            {{-- <td>{{ $item->net_total }}</td> --}}
                                             <td>{{ $net_total }}</td>
                                             <td>{{ $item->remark }}</td>
                                             <td>
