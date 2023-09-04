@@ -18,7 +18,7 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 5;
 
         if (!empty($keyword)) {
             $customer = Customer::where('name', 'LIKE', "%$keyword%")
@@ -34,6 +34,12 @@ class CustomerController extends Controller
         }
 
         return view('customer.index', compact('customer'));
+    }
+
+    public function index2(Request $request)
+    {
+        $customer = Customer::latest()->get();
+        return view('customer.index2', compact('customer'));
     }
 
     /**
@@ -55,9 +61,9 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Customer::create($requestData);
 
         return redirect('customer')->with('flash_message', 'Customer added!');
@@ -101,9 +107,9 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $customer = Customer::findOrFail($id);
         $customer->update($requestData);
 

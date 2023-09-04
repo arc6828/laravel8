@@ -93,6 +93,7 @@ Route::resource('post', PostController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('customer', CustomerController::class);
+    Route::get('customer2', [CustomerController::class, 'index2']);
     Route::get('quotation/{id}/pdf', [QuotationController::class, 'pdf']);
     Route::resource('quotation', QuotationController::class);
     Route::resource('quotation-detail', QuotationDetailController::class);
