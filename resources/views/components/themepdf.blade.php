@@ -7,18 +7,13 @@
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
-            font-size: 20px;
+            font-size: 16px;
         }
     </style>
-    
 </head>
 
 <body>
-
-    <div>สวัสดีวันจันทร์</div>
-    <div>{{ $a }}</div>
-    <div>{{ $b }}</div>
-    <div>{{ $c }}</div>
+    {{ $slot }}
 </body>
 
 </html>

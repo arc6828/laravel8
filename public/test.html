@@ -1,0 +1,59 @@
+<div style="display: inline-block;" >
+    <div style="flex: 1">ddd</div>
+    <div style="flex: 1">sss</div>
+    <table style="width: 100%">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                {{--
+                <td>{{ $quotation->id }}</td>
+                --}}
+                <td>{{ sprintf('Q%03d', $quotation->id) }}</td>
+            </tr>
+            <tr>
+                <th>Customer Id</th>
+                {{--
+                <td>{{ $quotation->customer_id }}</td>
+                --}}
+                <td>{{ $quotation->customer->name }}</td>
+            </tr>
+            <tr>
+                <th>User Id</th>
+                {{--
+                <td>{{ $quotation->user_id }}</td>
+                --}}
+                <td>{{ $quotation->user->name }}</td>
+            </tr>
+
+            <tr>
+                <th>Vat Percent</th>
+                <td>{{ $quotation->vat_percent }}%</td>
+            </tr>
+            <tr>
+                <th>Vat</th>
+                {{--
+                <td>{{ $quotation->vat }}</td>
+                --}}
+                <td>{{ $vat }}</td>
+            </tr>
+            <tr>
+                <th>Sub Total</th>
+                {{--
+                <td>{{ $quotation->sub_total }}</td>
+                --}}
+                <td>{{ $sub_total }}</td>
+            </tr>
+            <tr>
+                <th>Net Total</th>
+                {{--
+                <td>{{ $quotation->net_total }}</td>
+                --}}
+                <td>{{ $net_total }}</td>
+            </tr>
+            <tr>
+                <th>Remark</th>
+                <td>{{ $quotation->remark }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

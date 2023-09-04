@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Quotation;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class QuotationController extends Controller
@@ -93,7 +94,7 @@ class QuotationController extends Controller
         $users = User::get();
         $customers = Customer::get();
 
-        return view('quotation.edit', compact('quotation','users','customers'));
+        return view('quotation.edit', compact('quotation', 'users', 'customers'));
     }
 
     /**
@@ -127,5 +128,14 @@ class QuotationController extends Controller
         Quotation::destroy($id);
 
         return redirect('quotation')->with('flash_message', 'Quotation deleted!');
+    }
+
+    public function pdf($id)
+    {
+        $quotation = Quotation::findOrFail($id);
+
+        // return view('quotation.show', compact('quotation'));
+        $pdf = Pdf::loadView('quotation.pdf', compact('quotation'));
+        return $pdf->stream("quotation-{$id}.pdf");
     }
 }

@@ -93,16 +93,17 @@ Route::resource('post', PostController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('customer', CustomerController::class);
+    Route::get('quotation/{id}/pdf', [QuotationController::class, 'pdf']);
     Route::resource('quotation', QuotationController::class);
     Route::resource('quotation-detail', QuotationDetailController::class);
 });
 
 
-Route::get('/test/pdf', function(){
+Route::get('/test/pdf', function () {
     $a = "hello";
     $b = "world";
     $c = "วันจันทร์";
-    $pdf = Pdf::loadView('testpdf', compact('a','b','c'));
-    return $pdf->stream('test.pdf');
+    $pdf = Pdf::loadView('testpdf', compact('a', 'b', 'c'));
+    return $pdf->stream();
     // return view('testpdf', compact('a','b','c'));
 });
