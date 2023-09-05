@@ -105,7 +105,7 @@
                 <br />
                 <br />
                 <br />
-
+                {{-- ตำแหน่งตัวอักษรภาษาไทย --}}
                 {{-- <x-convert-baht /> --}}
                 {{-- <div>({{ baht_text($quotation->quotationDetails()->sum('total')) }}) </div> --}}
             </div>
