@@ -108,3 +108,8 @@ Route::get('/test/pdf', function () {
     return $pdf->stream();
     // return view('testpdf', compact('a','b','c'));
 });
+
+Route::get('test/bootstrap/pdf', function(){
+    $pdf = Pdf::loadView('test-bootstrap-pdf');
+    return $pdf->stream();
+});

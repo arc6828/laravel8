@@ -135,7 +135,7 @@ class QuotationController extends Controller
         $quotation = Quotation::findOrFail($id);
 
         // return view('quotation.show', compact('quotation'));
-        $pdf = Pdf::loadView('quotation.pdf', compact('quotation'));
+        $pdf = Pdf::loadView('quotation.pdf2', compact('quotation'));
         return $pdf->stream("quotation-{$id}.pdf");
     }
 }

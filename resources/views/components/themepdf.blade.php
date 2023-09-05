@@ -1,8 +1,8 @@
 <html>
-
-<head>
+<head>        
     <meta http-equiv="Content-Language" content="th" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {{-- thai font --}}
     <link href="https://fonts.googleapis.com/css2?family=Sarabun" rel="stylesheet">
     <style>
         body {
