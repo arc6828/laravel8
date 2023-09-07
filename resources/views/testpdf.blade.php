@@ -1,4 +1,4 @@
-<x-themepdf>
+<x-bootstrap-pdf>
     <div>สวัสดีวันจันทร์</div>
     <div>{{ $a }}</div>
     <div>{{ $b }}</div>
@@ -8,4 +8,4 @@
         <div class="col-xs-6">1</div>
         <div class="col-xs-6">2</div>
     </div>
-</x-themepdf>
+</x-bootstrap-pdf>
