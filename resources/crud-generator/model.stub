@@ -2,11 +2,14 @@
 
 namespace DummyNamespace;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 {{useSoftDeletes}}
 class DummyClass extends Model
 {
-    {{softDeletes}}/**
+    use HasFactory; 
+    {{softDeletes}}
+    /**
      * The database table used by the model.
      *
      * @var string

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LeaveRequestController;
+use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuotationController;
@@ -106,10 +108,18 @@ Route::get('/test/pdf', function () {
     $c = "วันจันทร์";
     $pdf = Pdf::loadView('testpdf', compact('a', 'b', 'c'));
     return $pdf->stream();
-    // return view('testpdf', compact('a','b','c'));
 });
 
-Route::get('test/bootstrap/pdf', function(){
+Route::get('test/bootstrap/pdf', function () {
     $pdf = Pdf::loadView('test-bootstrap-pdf');
     return $pdf->stream();
+});
+
+
+// Route::resource('leave-request', 'LeaveRequestController');
+// Route::resource('leave-type', 'LeaveTypeController');
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('leave-request', LeaveRequestController::class);
+    Route::resource('leave-type', LeaveTypeController::class);
 });
