@@ -1,0 +1,6 @@
+{
+    "fields": [
+        { "name": "leave_type_name", "type": "string" },
+        { "name": "max_leave_per_year", "type": "integer" }
+    ]
+}

@@ -49,6 +49,6 @@ class User extends Authenticatable
 
     public function quotations()
     {
-        return $this->hasMany(Quotation::class, 'quotation_id');
+        return $this->hasMany(Quotation::class, 'user_id');
     }
 }

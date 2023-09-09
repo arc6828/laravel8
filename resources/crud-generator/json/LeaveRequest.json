@@ -1,0 +1,11 @@
+{
+    "fields": [
+        { "name": "user_id", "type": "integer" },
+        { "name": "leave_type_name", "type": "string" },
+        { "name": "start_date", "type": "date" },
+        { "name": "end_date", "type": "date" },
+        { "name": "status", "type": "string" },
+        { "name": "comments", "type": "text" },
+        { "name": "approver_id", "type": "integer" }
+    ]
+}

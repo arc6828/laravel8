@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -34,3 +35,15 @@ Route::post('/sanctum/token',  function (Request $request) {
 
     return ['token' => $user->createToken($request->device_name)->plainTextToken];
 });
+
+Route::get('quotation',function(){
+    $quotations = Quotation::withSum('quotationDetails', 'total')->get();
+    return $quotations; 
+});
+
+Route::get('user',function(){
+    $users = User::select('id','name','email')->withCount('quotations')->get();
+    return $users; 
+});
+
+
