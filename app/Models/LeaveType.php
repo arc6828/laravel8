@@ -16,10 +16,10 @@ class LeaveType extends Model
     protected $table = 'leave_types';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -31,6 +31,8 @@ class LeaveType extends Model
 
     public function leaveRequests()
     {
-        return $this->hasMany(LeaveRequest::class, 'leave_type_name','leave_type_name');
+        return $this->hasMany(LeaveRequest::class, 'leave_type_name', 'leave_type_name');
     }
+
+   
 }

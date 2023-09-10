@@ -122,4 +122,9 @@ Route::get('test/bootstrap/pdf', function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('leave-request', LeaveRequestController::class);
     Route::resource('leave-type', LeaveTypeController::class);
+
+    Route::get("dashboard-leave",function(){
+        return view("dashboard-leave");
+    });
 });
+

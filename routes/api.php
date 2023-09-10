@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\LeaveRequest;
 use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -36,14 +37,28 @@ Route::post('/sanctum/token',  function (Request $request) {
     return ['token' => $user->createToken($request->device_name)->plainTextToken];
 });
 
-Route::get('quotation',function(){
+Route::get('quotation', function () {
     $quotations = Quotation::withSum('quotationDetails', 'total')->get();
-    return $quotations; 
+    return $quotations;
 });
 
-Route::get('user',function(){
-    $users = User::select('id','name','email')->withCount('quotations')->get();
-    return $users; 
+Route::get('user', function () {
+    $users = User::select('id', 'name', 'email')
+        ->withCount('quotations')
+        ->withCount('userLeaveRequests')
+        ->get();
+    return $users;
 });
 
-
+Route::get("leave-request-summary-type", function () {
+    $data = LeaveRequest::selectRaw('leave_type_name, count(leave_type_name) as total')
+        ->groupBy('leave_type_name')
+        ->get();
+    return $data;
+});
+Route::get("leave-request-summary-status", function () {
+    $data = LeaveRequest::selectRaw('status, count(status) as total')
+        ->groupBy('status')
+        ->get();
+    return $data;
+});
