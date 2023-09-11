@@ -120,11 +120,14 @@ Route::get('test/bootstrap/pdf', function () {
 // Route::resource('leave-type', 'LeaveTypeController');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('leave-request', LeaveRequestController::class);
-    Route::resource('leave-type', LeaveTypeController::class);
-
-    Route::get("dashboard-leave",function(){
-        return view("dashboard-leave");
+    Route::middleware(['role:admin,guest'])->group(function () {
+        Route::resource('leave-request', LeaveRequestController::class)->except(['edit','update']);
+    });
+    Route::middleware(['role:admin'])->group(function () {
+        Route::resource('leave-request', LeaveRequestController::class)->only(['edit','update']);
+        Route::resource('leave-type', LeaveTypeController::class);
+        Route::get("dashboard-leave", function () {
+            return view("dashboard-leave");
+        });
     });
 });
-

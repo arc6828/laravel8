@@ -1,6 +1,6 @@
 <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'User Id' }}</label>
-    <input class="form-control" name="user_id" type="number" id="user_id" value="{{ isset($leaverequest->user_id) ? $leaverequest->user_id : ''}}" >
+    <input class="form-control" name="user_id" type="number" id="user_id" value="{{ isset($leaverequest->user_id) ? $leaverequest->user_id : ''}}" readonly>
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('leave_type_name') ? 'has-error' : ''}}">
@@ -24,7 +24,7 @@
 </div>
 <div class="form-group {{ $errors->has('total_leave') ? 'has-error' : ''}}">
     <label for="total_leave" class="control-label">{{ 'Total Leave' }}</label>
-    <input class="form-control" name="total_leave" type="number" id="total_leave" value="{{ isset($leaverequest->total_leave) ? $leaverequest->total_leave : ''}}" >
+    <input class="form-control" name="total_leave" type="number" id="total_leave" value="{{ isset($leaverequest->total_leave) ? $leaverequest->total_leave : '1'}}" >
     {!! $errors->first('total_leave', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
@@ -43,7 +43,7 @@
 </div>
 <div class="form-group {{ $errors->has('approver_id') ? 'has-error' : ''}}">
     <label for="approver_id" class="control-label">{{ 'Approver Id' }}</label>
-    <input class="form-control" name="approver_id" type="number" id="approver_id" value="{{ isset($leaverequest->approver_id) ? $leaverequest->approver_id : ''}}" >
+    <input class="form-control" name="approver_id" type="number" id="approver_id" value="{{ isset($leaverequest->approver_id) ? $leaverequest->approver_id : ''}}" readonly>
     {!! $errors->first('approver_id', '<p class="help-block">:message</p>') !!}
 </div>
 

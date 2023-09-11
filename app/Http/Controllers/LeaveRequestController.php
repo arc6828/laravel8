@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveRequestController extends Controller
 {
@@ -20,19 +21,26 @@ class LeaveRequestController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-        if (!empty($keyword)) {
-            $leaverequest = LeaveRequest::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('leave_type_name', 'LIKE', "%$keyword%")
-                ->orWhere('start_date', 'LIKE', "%$keyword%")
-                ->orWhere('end_date', 'LIKE', "%$keyword%")
-                ->orWhere('total_leave', 'LIKE', "%$keyword%")
-                ->orWhere('status', 'LIKE', "%$keyword%")
-                ->orWhere('comments', 'LIKE', "%$keyword%")
-                ->orWhere('approver_id', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+        if (Auth::user()->role == "admin") {
+            if (!empty($keyword)) {
+                $leaverequest = LeaveRequest::where('user_id', 'LIKE', "%$keyword%")
+                    ->orWhere('leave_type_name', 'LIKE', "%$keyword%")
+                    ->orWhere('start_date', 'LIKE', "%$keyword%")
+                    ->orWhere('end_date', 'LIKE', "%$keyword%")
+                    ->orWhere('total_leave', 'LIKE', "%$keyword%")
+                    ->orWhere('status', 'LIKE', "%$keyword%")
+                    ->orWhere('comments', 'LIKE', "%$keyword%")
+                    ->orWhere('approver_id', 'LIKE', "%$keyword%")
+                    ->latest()->paginate($perPage);
+            } else {
+                $leaverequest = LeaveRequest::latest()->paginate($perPage);
+            }
         } else {
-            $leaverequest = LeaveRequest::latest()->paginate($perPage);
+            $leaverequest = LeaveRequest::where('user_id', Auth::id())
+                ->latest()->paginate($perPage);
         }
+
+
 
         return view('leave-request.index', compact('leaverequest'));
     }
@@ -56,9 +64,12 @@ class LeaveRequestController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        $requestData['user_id'] = Auth::id();
+        $requestData['status'] = "pending";
+
         LeaveRequest::create($requestData);
 
         return redirect('leave-request')->with('flash_message', 'LeaveRequest added!');
@@ -102,10 +113,13 @@ class LeaveRequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $leaverequest = LeaveRequest::findOrFail($id);
+
+        $requestData['approver_id'] = Auth::id();
+
         $leaverequest->update($requestData);
 
         return redirect('leave-request')->with('flash_message', 'LeaveRequest updated!');

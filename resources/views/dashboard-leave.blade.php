@@ -145,8 +145,10 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components,
+                    and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
+                    Pro!</a>
             </div>
 
         </ul>
@@ -170,8 +172,8 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small"
+                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -229,7 +231,8 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <span class="font-weight-bold">A new monthly report is ready to
+                                            download!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -254,7 +257,8 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                    Alerts</a>
                             </div>
                         </li>
 
@@ -274,8 +278,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -286,8 +289,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -298,20 +300,20 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                                        <div class="text-truncate">Last month's report looks great, I am very happy
+                                            with
                                             the progress so far, keep up the good work!</div>
                                         <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle"
+                                            src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -320,7 +322,8 @@
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
+                                    Messages</a>
                             </div>
                         </li>
 
@@ -331,8 +334,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -350,7 +352,8 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -372,8 +375,9 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
+                    
                     <!-- Content Row -->
-                    <div class="row">                       
+                    <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4" id="pending">
@@ -382,7 +386,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pending</div>
+                                                Pending (ครั้ง)
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -394,13 +399,13 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" id="accepted">
+                        <div class="col-xl-3 col-md-6 mb-4" id="approved">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Accepted (ครั้ง)</div>
+                                                Approved (ครั้ง)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -417,7 +422,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Rejected (ครั้ง)
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Rejected (ครั้ง)
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -441,13 +447,13 @@
                         </div>
 
                         <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4"  id="users">
+                        <div class="col-xl-3 col-md-6 mb-4" id="users">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                พนักงาน (คน)</div>
+                                                พนักงานที่ยื่นใบลา (คน)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -460,22 +466,33 @@
                     </div>
 
                     <script>
-                        async function call_for_boxes(){
+                        async function call_for_boxes() {
+                            // pending / approved / rejected
                             let leave_requests;
-                            leave_requests = await fetch("{{ url('/api/leave-request-summary') }}");
+                            leave_requests = await fetch("{{ url('/api/leave-request-summary-status') }}");
                             leave_requests = await leave_requests.json();
 
-                            for(let item of leave_requests)
-                            {
-                                if(item.leave_type_name == "sick") 
-                                    document.querySelector("#sick .h5").innerHTML = ""+item.total;                                    
-                                else if(item.leave_type_name == "personal")
-                                    document.querySelector("#personal .h5").innerHTML = ""+item.total;                                    
-                                else if(item.leave_type_name == "vacation")
-                                    document.querySelector("#personal .h5").innerHTML = ""+item.total;                                    
+                            for (let item of leave_requests) {
+                                if (item.status == "pending")
+                                    document.querySelector("#pending .h5").innerHTML = "" + item.total;
+                                else if (item.status == "approved")
+                                    document.querySelector("#approved .h5").innerHTML = "" + item.total;
+                                else if (item.status == "rejected")
+                                    document.querySelector("#rejected .h5").innerHTML = "" + item.total;
                             }
-                        }      
-                        call_for_boxes();                      
+
+                            // user
+                            let users;
+                            users = await fetch("{{ url('/api/user') }}");
+                            users = await users.json();
+                            //filt to count total
+                            let filtered_users = users.filter(function(item) {
+                                return item.user_leave_requests_count > 0;
+                            });
+                            // document.querySelector("#users .h5").innerHTML = "" + filtered_users.length + " จาก ": + users.length;
+                            document.querySelector("#users .h5").innerHTML = `${filtered_users.length} จาก ${users.length}`;
+                        }
+                        call_for_boxes();
                     </script>
 
                     <!-- Content Row -->
@@ -488,10 +505,11 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">การลาในแต่ละเดือน</h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="dropdown-toggle" href="#" role="button"
+                                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
@@ -519,10 +537,11 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">สัดส่วนการลาตลอดปี</h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="dropdown-toggle" href="#" role="button"
+                                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
@@ -542,13 +561,13 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fas fa-circle text-primary"></i> Personal
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <i class="fas fa-circle text-success"></i> Sick
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle text-info"></i> Vacation
                                         </span>
                                     </div>
                                 </div>
@@ -565,28 +584,57 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        <span id="name">Name</span>
+                                        <span class="float-right">
+                                            <form class="form-inline">
+                                                <button type="button" class="btn btn-light"
+                                                    onclick="drawProgress('-1');"><i
+                                                        class="fas fa-chevron-left text-gray-500"></i></button>
+                                                <input class="form-control" id="user_id" min="1"
+                                                    max="" value="1" style="width: 50px;" />
+                                                <span class="mx-2"> of </span>
+                                                <span id="users_length">M</span>
+                                                <button type="button" class="btn btn-light"
+                                                    onclick="drawProgress('+1');"><i
+                                                        class="fas fa-chevron-right text-gray-500"></i></button>
+                                            </form>
+                                        </span>
+                                    </h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">Server Migration <span
-                                            class="float-right">20%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="individual-sick">
+                                        <h4 class="small font-weight-bold">
+                                            <span class="type-name">Sick </span>
+                                            <span class="float-right">0 from 0 (0%)</span>
+                                        </h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%"
+                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Sales Tracking <span
-                                            class="float-right">40%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="individual-personal">
+                                        <h4 class="small font-weight-bold">
+                                            <span class="type-name">Personal </span>
+                                            <span class="float-right">0 from 0 (0%)</span>
+                                        </h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Customer Database <span
-                                            class="float-right">60%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="individual-vacation">
+                                        <h4 class="small font-weight-bold">
+                                            <span class="type-name">Vacation </span>
+                                            <span class="float-right">0 from 0 (0%)</span>
+                                        </h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar" role="progressbar" style="width: 0%"
+                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Payout Details <span
+                                    {{-- <h4 class="small font-weight-bold">Payout Details <span
                                             class="float-right">80%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
@@ -597,9 +645,83 @@
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
+
+                            <script>
+                                async function drawProgress(step) {
+                                    // control                                         
+                                    if (step == "-1") {
+                                        let n = Number(document.querySelector("#user_id").value);
+                                        let max = document.querySelector("#user_id").getAttribute("max");
+                                        if (n - 1 > 0) {
+                                            document.querySelector("#user_id").value = n - 1;
+                                        } else {
+                                            document.querySelector("#user_id").value = max;
+                                        }
+
+                                    } else if (step == "+1") {
+                                        let n = Number(document.querySelector("#user_id").value);
+                                        let max = document.querySelector("#user_id").getAttribute("max");
+                                        if (max == "") {
+                                            document.querySelector("#user_id").value = n + 1;
+                                        } else if (Number(max) > n) {
+                                            document.querySelector("#user_id").value = n + 1;
+                                        } else {
+                                            document.querySelector("#user_id").value = 1;
+                                        }
+                                    }
+
+                                    // fetch 
+                                    let user_id = document.querySelector("#user_id").value;
+                                    let data;
+                                    data = await fetch("{{ url('/api/leave-request-summary-type') }}/" + user_id);
+                                    data = await data.json();
+
+                                    console.log(data);
+
+                                    // user
+                                    let user = data.user;
+                                    let users_length = data.users_length;
+                                    document.querySelector("#name").innerHTML = "" + user.name;
+                                    document.querySelector("#user_id").value = "" + user.id;
+                                    document.querySelector("#user_id").setAttribute("max", users_length);
+                                    document.querySelector("#users_length").innerHTML = "" + users_length;
+
+                                    // leave data
+                                    if (data.leave_requests.length > 0) {
+                                        for (let item of data.leave_requests) {
+                                            let percent_text =
+                                                `${item.total} from ${item.max_leave_per_year} (${Number(item.total/item.max_leave_per_year*100).toFixed(0)}%)`
+                                            let percent = Number(item.total / item.max_leave_per_year * 100).toFixed(0);
+                                            if (item.leave_type_name == "sick") {
+                                                document.querySelector("#individual-sick .float-right").innerHTML = percent_text;
+                                                document.querySelector("#individual-sick .progress-bar").style.width = "" + percent + "%";
+                                            } else if (item.leave_type_name == "personal") {
+                                                document.querySelector("#individual-personal .float-right").innerHTML = percent_text;
+                                                document.querySelector("#individual-personal .progress-bar").style.width = "" + percent + "%";
+                                            } else if (item.leave_type_name == "vacation") {
+                                                document.querySelector("#individual-vacation .float-right").innerHTML = percent_text;
+                                                document.querySelector("#individual-vacation .progress-bar").style.width = "" + percent + "%";
+                                            }
+                                        }
+
+                                    } else {
+                                        let percent_text = "0 from 0 (0%)";
+                                        let percent = 0;
+                                        document.querySelector("#individual-sick .float-right").innerHTML = percent_text;
+                                        document.querySelector("#individual-sick .progress-bar").style.width = "" + percent + "%";
+                                        document.querySelector("#individual-personal .float-right").innerHTML = percent_text;
+                                        document.querySelector("#individual-personal .progress-bar").style.width = "" + percent + "%";
+                                        document.querySelector("#individual-vacation .float-right").innerHTML = percent_text;
+                                        document.querySelector("#individual-vacation .progress-bar").style.width = "" + percent + "%";
+                                    }
+
+                                }
+
+                                drawProgress();
+                            </script>
 
                             <!-- Color System -->
                             <div class="row">
@@ -687,7 +809,8 @@
                                             target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
                                         constantly updated collection of beautiful svg images that you can use
                                         completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations
+                                        on
                                         unDraw &rarr;</a>
                                 </div>
                             </div>
@@ -701,13 +824,15 @@
                                     <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
                                         CSS bloat and poor page performance. Custom CSS classes are used to create
                                         custom components and custom utility classes.</p>
-                                    <p class="mb-0">Before working with this theme, you should become familiar with the
+                                    <p class="mb-0">Before working with this theme, you should become familiar with
+                                        the
                                         Bootstrap framework, especially the utility classes.</p>
                                 </div>
                             </div>
 
                         </div>
                     </div>
+
 
                 </div>
                 <!-- /.container-fluid -->
@@ -770,8 +895,208 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    {{-- <script src="js/demo/chart-area-demo.js"></script> --}}
+    <script>
+        async function drawAreaChart() {
+            // Set new default font family and font color to mimic Bootstrap's default styling
+            Chart.defaults.global.defaultFontFamily = 'Nunito',
+                '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+            Chart.defaults.global.defaultFontColor = '#858796';
+
+            function number_format(number, decimals, dec_point, thousands_sep) {
+                // *     example: number_format(1234.56, 2, ',', ' ');
+                // *     return: '1 234,56'
+                number = (number + '').replace(',', '').replace(' ', '');
+                var n = !isFinite(+number) ? 0 : +number,
+                    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                    s = '',
+                    toFixedFix = function(n, prec) {
+                        var k = Math.pow(10, prec);
+                        return '' + Math.round(n * k) / k;
+                    };
+                // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+                s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+                if (s[0].length > 3) {
+                    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+                }
+                if ((s[1] || '').length < prec) {
+                    s[1] = s[1] || '';
+                    s[1] += new Array(prec - s[1].length + 1).join('0');
+                }
+                return s.join(dec);
+            }
+
+            //load data
+            let leave_requests;
+            leave_requests = await fetch("{{ url('/api/leave-request-summary-month/2023') }}");
+            leave_requests = await leave_requests.json();
+
+            let area_chart_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            for (let item of leave_requests) {
+                area_chart_data[item.m - 1] = item.total;
+            }
+
+
+            // Area Chart Example
+            var ctx = document.getElementById("myAreaChart");
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
+                        "Dec"
+                    ],
+                    datasets: [{
+                        label: "Leaves",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(78, 115, 223, 0.05)",
+                        borderColor: "rgba(78, 115, 223, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        // data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000,
+                        //     40000
+                        // ],
+                        data: area_chart_data,
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 25,
+                            top: 25,
+                            bottom: 0
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            time: {
+                                unit: 'date'
+                            },
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 7
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                maxTicksLimit: 5,
+                                padding: 10,
+                                // Include a dollar sign in the ticks
+                                callback: function(value, index, values) {
+                                    return '' + number_format(value);
+                                }
+                            },
+                            gridLines: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                            }
+                        }],
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        titleMarginBottom: 10,
+                        titleFontColor: '#6e707e',
+                        titleFontSize: 14,
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        intersect: false,
+                        mode: 'index',
+                        caretPadding: 10,
+                        callbacks: {
+                            label: function(tooltipItem, chart) {
+                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        drawAreaChart();
+    </script>
+
+    {{-- pie chart --}}
+    {{-- <script src="js/demo/chart-pie-demo.js"></script> --}}
+    <script>
+        async function drawPieChart() {
+            // Set new default font family and font color to mimic Bootstrap's default styling
+            Chart.defaults.global.defaultFontFamily = 'Nunito',
+                '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+            Chart.defaults.global.defaultFontColor = '#858796';
+
+            //load data
+            // pending / approved / rejected
+            let leave_requests;
+            leave_requests = await fetch("{{ url('/api/leave-request-summary-type') }}");
+            leave_requests = await leave_requests.json();
+
+            let pie_chart_label = leave_requests.map(function(item) {
+                return item.leave_type_name;
+            }); // ["personal", "sick", "vacation"]
+            let pie_chart_data = leave_requests.map(function(item) {
+                return item.total;
+            }); // [36, 49, 50]
+
+            // Pie Chart Example
+            var ctx = document.getElementById("myPieChart");
+            var myPieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    // labels: ["Direct", "Referral", "Social"],
+                    labels: pie_chart_label,
+                    datasets: [{
+                        // data: [55, 30, 15],
+                        data: pie_chart_data,
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                        hoverBorderColor: "rgba(234, 236, 244, 1)",
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        caretPadding: 10,
+                    },
+                    legend: {
+                        display: false
+                    },
+                    cutoutPercentage: 80,
+                },
+            });
+        }
+        drawPieChart();
+    </script>
 
 </body>
 
