@@ -59,14 +59,16 @@
                                             <td>{{ $item->comments }}</td>
                                             <td>{{ $item->approver_id }}</td>
                                             <td>
-                                                @if(Auth()->user()->role == "admin")
-                                                <a href="{{ url('/leave-request/' . $item->id) }}"
-                                                    title="View LeaveRequest"><button class="btn btn-info btn-sm"><i
-                                                            class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                                <a href="{{ url('/leave-request/' . $item->id . '/edit') }}"
-                                                    title="Edit LeaveRequest"><button class="btn btn-primary btn-sm"><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        Edit</button></a>                                                        
+                                                @if (Auth()->user()->role == 'admin')
+                                                    <a href="{{ url('/leave-request/' . $item->id) }}"
+                                                        title="View LeaveRequest"><button class="btn btn-info btn-sm"><i
+                                                                class="fa fa-eye" aria-hidden="true"></i>
+                                                            View</button></a>
+                                                    <a href="{{ url('/leave-request/' . $item->id . '/edit') }}"
+                                                        title="Edit LeaveRequest"><button
+                                                            class="btn btn-primary btn-sm"><i
+                                                                class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                            Edit</button></a>
                                                 @endif
 
                                                 <form method="POST"

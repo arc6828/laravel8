@@ -375,7 +375,7 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-                    
+
                     <!-- Content Row -->
                     <div class="row">
 
@@ -619,9 +619,8 @@
                                             <span class="float-right">0 from 0 (0%)</span>
                                         </h4>
                                         <div class="progress mb-4">
-                                            <div class="progress-bar bg-warning" role="progressbar"
-                                                style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%"
+                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                     <div id="individual-vacation">
@@ -676,7 +675,7 @@
                                     // fetch 
                                     let user_id = document.querySelector("#user_id").value;
                                     let data;
-                                    data = await fetch("{{ url('/api/leave-request-summary-type') }}/" + user_id);
+                                    data = await fetch("{{ url('/api/leave-request-summary-type/user') }}/" + user_id);
                                     data = await data.json();
 
                                     console.log(data);
@@ -960,9 +959,7 @@
                         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        // data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000,
-                        //     40000
-                        // ],
+                        // data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000 ],
                         data: area_chart_data,
                     }],
                 },

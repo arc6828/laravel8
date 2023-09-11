@@ -50,12 +50,6 @@ Route::get('user', function () {
     return $users;
 });
 
-Route::get("leave-request-summary-type", function () {
-    $data = LeaveRequest::selectRaw('leave_type_name, count(leave_type_name) as total')
-        ->groupBy('leave_type_name')
-        ->get();
-    return $data;
-});
 Route::get("leave-request-summary-status", function () {
     $data = LeaveRequest::selectRaw('status, count(status) as total')
         ->groupBy('status')
@@ -72,9 +66,16 @@ Route::get("leave-request-summary-month/{year}", function ($year) {
 });
 
 
-Route::get("leave-request-summary-type/{user_id}", function ($user_id) {
+Route::get("leave-request-summary-type", function () {
+    $data = LeaveRequest::selectRaw('leave_type_name, count(leave_type_name) as total')
+        ->groupBy('leave_type_name')
+        ->get();
+    return $data;
+});
+
+Route::get("leave-request-summary-type/user/{user_id}", function ($user_id) {
     $user = User::findOrFail($user_id);
-    $users = User::get();
+    $latest_user = User::latest()->first();
     $leave_requests = LeaveRequest::selectRaw('leave_requests.leave_type_name, count(leave_requests.leave_type_name) as total, max_leave_per_year')
         ->join('leave_types', 'leave_types.leave_type_name', '=', 'leave_requests.leave_type_name')
         ->where('user_id', $user_id)
@@ -82,7 +83,7 @@ Route::get("leave-request-summary-type/{user_id}", function ($user_id) {
         ->get();
     $data = [
         "user" => $user,
-        "users_length" => count($users),
+        "users_length" => $latest_user->id,
         "leave_requests" => $leave_requests,
     ];
     return $data;
