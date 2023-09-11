@@ -45,7 +45,6 @@ Route::get('quotation', function () {
 
 Route::get('user', function () {
     $users = User::select('id', 'name', 'email')
-        ->withCount('quotations')
         ->withCount('userLeaveRequests')
         ->get();
     return $users;
