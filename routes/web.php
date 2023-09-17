@@ -121,13 +121,24 @@ Route::get('test/bootstrap/pdf', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:admin,guest'])->group(function () {
-        Route::resource('leave-request', LeaveRequestController::class)->except(['edit','update']);
+        Route::resource('leave-request', LeaveRequestController::class)->except(['edit', 'update']);
     });
     Route::middleware(['role:admin'])->group(function () {
-        Route::resource('leave-request', LeaveRequestController::class)->only(['edit','update']);
+        Route::resource('leave-request', LeaveRequestController::class)->only(['edit', 'update']);
         Route::resource('leave-type', LeaveTypeController::class);
         Route::get("dashboard-leave", function () {
             return view("dashboard-leave");
         });
     });
+});
+
+
+Route::get("counter", function () {
+    return view("counter");
+});
+Route::get("shop", function () {
+    return view("shop");
+});
+Route::get("shop-livewire", function () {
+    return view("shop-livewire");
 });
