@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\OrderlineController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuotationController;
@@ -142,3 +145,10 @@ Route::get("shop", function () {
 Route::get("shop-livewire", function () {
     return view("shop-livewire");
 });
+
+// Route::resource('movie', 'MovieController');
+// Route::resource('category', 'CategoryController');
+// Route::resource('orderline', 'OrderlineController');
+Route::resource('movie', MovieController::class);
+Route::resource('category', CategoryController::class);
+Route::resource('orderline', OrderlineController::class);
