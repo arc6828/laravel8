@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Product;
+use App\Models\Movie;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,27 +20,24 @@ class Shop extends Component
         $keyword = $this->keyword;
 
         // DEFINE ITEM PER PAGE
-        $perPage = 8;
+        $perPage = 10;
 
         if (!empty($keyword)) {
             //CASE SEARCH, show some
-            $products = Product::where('title', 'LIKE', "%$keyword%")
-                // ->orWhere('content', 'LIKE', "%$keyword%")
-                // ->orWhere('price', 'LIKE', "%$keyword%")
-                // ->orWhere('cost', 'LIKE', "%$keyword%")
-                // ->orWhere('photo', 'LIKE', "%$keyword%")
-                // ->orWhere('stock', 'LIKE', "%$keyword%")
+            $movies = Movie::where('title', 'LIKE', "%$keyword%")
+                ->orWhere('actor', 'LIKE', "%$keyword%")
+                ->orWhere('price', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             // CASE NOT SEARCH, show all
-            $products = Product::latest()->paginate($perPage);
+            $movies = Movie::latest()->paginate($perPage);
         }
-        return $products;
+        return $movies;
     }    
 
     public function render()
     {
-        $products = $this->query();
-        return view('livewire.shop',compact('products'));
+        $movies = $this->query();
+        return view('livewire.shop',compact('movies'));
     }
 }

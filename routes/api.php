@@ -2,6 +2,7 @@
 
 use App\Models\LeaveRequest;
 use App\Models\LeaveType;
+use App\Models\Movie;
 use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -48,6 +49,13 @@ Route::get('user', function () {
         ->withCount('userLeaveRequests')
         ->get();
     return $users;
+});
+
+Route::get('movies', function () {
+    $movies = Movie::withCount('orderlines','quantity')
+        ->limit()
+        ->get();
+    return $movies;
 });
 
 Route::get("leave-request-summary-status", function () {

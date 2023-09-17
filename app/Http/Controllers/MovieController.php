@@ -17,21 +17,30 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
+
+        // FILTER BY SEARCH        
         $keyword = $request->get('search');
-        $perPage = 25;
+        $movie = Movie::where('category_id', 'LIKE', "%$keyword%")
+            ->orWhere('title', 'LIKE', "%$keyword%")
+            ->orWhere('actor', 'LIKE', "%$keyword%")
+            ->orWhere('price', 'LIKE', "%$keyword%");
 
-        if (!empty($keyword)) {
-            $movie = Movie::where('category_id', 'LIKE', "%$keyword%")
-                ->orWhere('title', 'LIKE', "%$keyword%")
-                ->orWhere('actor', 'LIKE', "%$keyword%")
-                ->orWhere('price', 'LIKE', "%$keyword%")
-                ->orWhere('special', 'LIKE', "%$keyword%")
-                ->orWhere('common_id', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $movie = Movie::latest()->paginate($perPage);
+        // WITH SUM
+        $movie = $movie->withSum('orderlines','quantity');
+
+        // ORDER BY
+        $sort = $request->get('sort');
+        switch($sort)
+        {
+            case "best-seller" : $movie = $movie->orderBy('price','asc'); break;
+            case "price-asc" : $movie = $movie->orderBy('price','asc'); break;
+            case "price-desc" : $movie = $movie->orderBy('price','asc'); break;
         }
+        
 
+        // PAGINATION
+        $perPage = 25;
+        $movie = $movie->paginate($perPage);
         return view('movie.index', compact('movie'));
     }
 
@@ -54,9 +63,9 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Movie::create($requestData);
 
         return redirect('movie')->with('flash_message', 'Movie added!');
@@ -100,9 +109,9 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $movie = Movie::findOrFail($id);
         $movie->update($requestData);
 
