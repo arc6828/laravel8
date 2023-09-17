@@ -1,120 +1,55 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <h1>Hello World!</h1>
-
-
-    <div class="text-center">
-        <div>
+    {{-- card 1 --}}
+    <div class="card my-4">
+        <div class="card-header">
+            <h5>(1) Click with some actions</h5>
+        </div>
+        <div class="card-body text-center">
             <button class="btn btn-secondary" wire:click="decrement">-</button>
             <span class="fs-4 mx-4">{{ $count }}</span>
             <button class="btn btn-primary" wire:click="increment">+</button>
         </div>
-        <div>
-            <input type="text" value="" wire:model="message" />
-            <input type="text" class="form-control" name="search" placeholder="Search..." wire:model="message" />
-            <span class="fs-4 mx-4">{{ $message }}</span>
-        </div>
     </div>
 
-    <div class="row g-4">
-        <div class="col-lg-3">
-            <a class="btn btn-success" href="{{ route('product.create') }}"> Create New Product</a>
+    {{-- card 2 --}}
+    <div class="card my-4">
+        <div class="card-header">
+            <h5>(2) Data binding</h5>
         </div>
-        <div class="col-lg-3">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                <i class="fa fa-filter"></i> Filter
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" wire:model="message" value="{{ $message }}" />
+                </div>
+                <div class="col-sm-6">
+                    <span class="fs-4 mx-4">{{ $message }}</span>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
-            <select class="form-select" aria-label="Default select example">
-                <option value="best-seller">Best Seller</option>
-                <option value="price-asc" selected>Price : Low - High</option>
-                <option value="price-desc">Price : High - Low</option>
-            </select>
-        </div>
-        <div class="col-lg-3">
-            <input type="text" class="form-control" name="search" placeholder="Search..." wire:model="keyword" />
+    </div>
 
-            {{-- <form method="GET" action="{{ route('product.index') }}" class="form-inline">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search..." wire:model="keyword"/>
-                    <span class="input-group-append">
-                        <button class="btn btn-secondary" type="submit">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </span>
+    {{-- card 3 --}}
+    <div class="card my-4">
+        <div class="card-header">
+            <h5>(3) Data binding & Re-calculate other data : BMI Calculator</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Weight in kg.</label>
+                    <input type="number" class="form-control" wire:model="weight" value="{{ $weight }}" />
+                    {{-- <input type="text" class="form-control" wire:model.debounce.1s="weight" value="{{ $weight }}" /> --}}
+
                 </div>
-            </form> --}}
+                <div class="col-sm-4">
+                    <label>Height in cm.</label>
+                    <input type="number" class="form-control" wire:model="height" value="{{ $height }}" />
+                    {{-- <input type="text" class="form-control" wire:model.debounce.1000ms="height" value="{{ $height }}" /> --}}
+                </div>
+                <div class="col-sm-4 text-center p-4">
+                    <span class="fs-4 mx-4">{{ $bmi }}</span>
+                </div>
+            </div>
         </div>
     </div>
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-    <div class="table-responsive">
-        <table class="table my-4">
-            <tr>
-                <th>#</th>
-                <th>Photo</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th width="280px">Action</th>
-            </tr>
-            @foreach ($products as $item)
-                <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>
-                        <img src="{{ $item->photo }}" height="100" />
-                    </td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->content }}</td>
-                    <td>{{ $item->price }}</td>
-                    <td>{{ $item->stock }}</td>
-                    <td>
-                        <div class="d-flex justify-content-around px-4">
-                            <a class="btn btn-info" href="{{ route('product.show', $item->id) }}">Show</a>
-
-                            <a class="btn btn-primary" href="{{ route('product.edit', $item->id) }}">Edit</a>
-
-                            <form action="{{ route('product.destroy', $item->id) }}" method="POST"
-                                onsubmit="return confirm('Confirm delete?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-    </div>
-    <div class="mt-4">{{ $products->appends(['search' => request('search')])->links() }}</div>
 </div>
