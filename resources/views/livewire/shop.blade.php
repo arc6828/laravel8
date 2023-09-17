@@ -1,21 +1,5 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <h1>Hello World!</h1>
-
-
-    <div class="text-center">
-        <div>
-            <button class="btn btn-secondary" wire:click="decrement">-</button>
-            <span class="fs-4 mx-4">{{ $count }}</span>
-            <button class="btn btn-primary" wire:click="increment">+</button>
-        </div>
-        <div>
-            <input type="text" value="" wire:model="message" />
-            <input type="text" class="form-control" name="search" placeholder="Search..." wire:model="message" />
-            <span class="fs-4 mx-4">{{ $message }}</span>
-        </div>
-    </div>
-
+    
     <div class="row g-4">
         <div class="col-lg-3">
             <a class="btn btn-success" href="{{ route('product.create') }}"> Create New Product</a>

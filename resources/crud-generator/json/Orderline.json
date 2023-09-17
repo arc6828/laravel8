@@ -1,0 +1,9 @@
+{
+    "fields": [
+        { "name": "line", "type": "integer" },
+        { "name": "order_id", "type": "integer" },
+        { "name": "movie_id", "type": "integer" },
+        { "name": "quantity", "type": "integer" },
+        { "name": "order_date", "type": "date" }
+    ]
+}
