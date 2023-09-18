@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -17,31 +17,50 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
-
-        // FILTER BY SEARCH        
-        $keyword = $request->get('search');
-        $movie = Movie::where('category_id', 'LIKE', "%$keyword%")
-            ->orWhere('title', 'LIKE', "%$keyword%")
-            ->orWhere('actor', 'LIKE', "%$keyword%")
-            ->orWhere('price', 'LIKE', "%$keyword%");
-
-        // WITH SUM
-        $movie = $movie->withSum('orderlines','quantity');
-
-        // ORDER BY
-        $sort = $request->get('sort');
-        switch($sort)
-        {
-            case "best-seller" : $movie = $movie->orderBy('price','asc'); break;
-            case "price-asc" : $movie = $movie->orderBy('price','asc'); break;
-            case "price-desc" : $movie = $movie->orderBy('price','asc'); break;
-        }
+        // FILTER BY INPUT SEARCH        
+        $keyword = $request->get('search', '');
+        $query = Movie::where(function ($q) use ($keyword) {
+            $q->where('title', 'LIKE', "%$keyword%")
+                ->orWhere('actor', 'LIKE', "%$keyword%");
+        });
         
+        // FILTER BY PRICE        
+        $priceMin = $request->get('priceMin',0);
+        $priceMax = $request->get('priceMax',10000);
+        // $priceMin = $priceMin ? $priceMin : 0;
+        // $priceMax = $priceMax ? $priceMax : 10000;
+        $query = $query->whereBetween('price', [$priceMin, $priceMax]);
+        // $query = $query->whereBetween('price', [0, 10000]);
+
+        // FILTER BY CATEGORIES 
+        $category_ids = $request->get('category_id', []);
+        if(!empty($category_ids)){
+            $query = $query->whereIn('category_id', $category_ids);
+        }
+
+        // ORDER BY : default with best-seller
+        // $sort = $request->get('sort','best-seller-inactive');
+        $sort = $request->get('sort', 'best-seller');
+        switch ($sort) {
+            case "best-seller":
+                $query = $query->orderBy('sold', 'desc');
+                break;
+            case "price-asc":
+                $query = $query->orderBy('price', 'asc');
+                break;
+            case "price-desc":
+                $query = $query->orderBy('price', 'desc');
+                break;
+        }
 
         // PAGINATION
         $perPage = 25;
-        $movie = $movie->paginate($perPage);
-        return view('movie.index', compact('movie'));
+        $movie = $query->paginate($perPage);
+
+        // Category
+        $category = Category::get();        
+
+        return view('movie.index', compact('movie','category'));
     }
 
     /**

@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Movie</div>
                     <div class="card-body">
-                        <form method="GET" action="{{ url('/movie') }}" >
+                        <form method="GET" action="{{ url('/movie') }}">
                             <div class="row">
                                 <div class="col-lg-3">
                                     <a href="{{ url('/movie/create') }}" class="btn btn-success btn-sm"
@@ -26,28 +26,59 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Filter</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    ...
+                                                    <h5>Price</h5>
+                                                    <div class="row ">
+                                                        <div class="col-sm-3">
+                                                            <input type="number" name="priceMin" min="0" value="{{ request('priceMin') ? request('priceMin') : '0' }}"
+                                                                class="form-control" required/>
+                                                        </div>
+                                                        <div class="col-sm-1 text-center">
+                                                            -
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="number" name="priceMax" min="0" value="{{ request('priceMax') ? request('priceMax') : '10000' }}"
+                                                                class="form-control" required />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <h5>หมวดหมู่</h5>
+                                                    <div class="row ">
+                                                        @foreach ($category as $c)                                                        
+                                                            <div class="col-sm-4">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        value="{{ $c->id }}" name="category_id[]" {{ in_array($loop->iteration, request('category_id',[])) ? "checked" : "" }}
+                                                                        >
+                                                                    <label class="form-check-label"> {{ $c->name }}
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                    {{-- <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button> --}}
+                                                    <button type="submit" class="btn btn-primary">Filter</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select class="form-select" name="sort">
-                                        <option value="price-asc" selected>Price : Low - High</option>
-                                        <option value="price-desc">Price : High - Low</option>
+                                    <select class="form-select" name="sort" id="sort">
                                         <option value="best-seller">Best Seller</option>
+                                        <option value="price-asc">Price : Low - High</option>
+                                        <option value="price-desc">Price : High - Low</option>
                                     </select>
+                                    <script>
+                                        document.querySelector("#sort").value = "{{ request('sort') ? request('sort') : 'best-seller' }}";
+                                    </script>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="input-group">
@@ -76,6 +107,7 @@
                                         <th>Price</th>
                                         <th>Special</th>
                                         <th>Common Id</th>
+                                        <th>Sold</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -89,6 +121,7 @@
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->special }}</td>
                                             <td>{{ $item->common_id }}</td>
+                                            <td>{{ $item->sold }}</td>
                                             <td>
                                                 <a href="{{ url('/movie/' . $item->id) }}" title="View Movie"><button
                                                         class="btn btn-info btn-sm"><i class="fa fa-eye"

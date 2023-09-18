@@ -5,6 +5,7 @@
         { "name": "actor", "type": "string" },
         { "name": "price", "type": "float" },
         { "name": "special", "type": "integer" },
-        { "name": "common_id", "type": "integer" }
+        { "name": "common_id", "type": "integer" },
+        { "name": "sold", "type": "integer" }
     ]
 }

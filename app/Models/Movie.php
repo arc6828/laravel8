@@ -28,7 +28,7 @@ class Movie extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id', 'title', 'actor', 'price', 'special', 'common_id'];
+    protected $fillable = ['category_id', 'title', 'actor', 'price', 'special', 'common_id', 'sold'];
 
     public function category()
     {

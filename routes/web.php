@@ -12,6 +12,7 @@ use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -148,7 +149,9 @@ Route::get("shop-livewire", function () {
 
 // Route::resource('movie', 'MovieController');
 // Route::resource('category', 'CategoryController');
-// Route::resource('orderline', 'OrderlineController');
 Route::resource('movie', MovieController::class);
 Route::resource('category', CategoryController::class);
-Route::resource('orderline', OrderlineController::class);
+
+Route::get('movie2', function(Request $request){
+    return $request->get('category_id');
+});

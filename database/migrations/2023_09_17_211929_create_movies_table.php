@@ -22,6 +22,7 @@ class CreateMoviesTable extends Migration
             $table->float('price')->nullable();
             $table->integer('special')->nullable();
             $table->integer('common_id')->nullable();
+            $table->integer('sold')->nullable();
             });
     }
 

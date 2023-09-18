@@ -51,12 +51,6 @@ Route::get('user', function () {
     return $users;
 });
 
-Route::get('movies', function () {
-    $movies = Movie::withCount('orderlines','quantity')
-        ->limit()
-        ->get();
-    return $movies;
-});
 
 Route::get("leave-request-summary-status", function () {
     $data = LeaveRequest::selectRaw('status, count(status) as total')
@@ -87,7 +81,7 @@ Route::get("leave-request-summary-type/user/{user_id}", function ($user_id) {
     $leave_requests = LeaveRequest::selectRaw('leave_requests.leave_type_name, count(leave_requests.leave_type_name) as total, max_leave_per_year')
         ->join('leave_types', 'leave_types.leave_type_name', '=', 'leave_requests.leave_type_name')
         ->where('user_id', $user_id)
-        ->groupBy('leave_type_name','max_leave_per_year')
+        ->groupBy('leave_type_name', 'max_leave_per_year')
         ->get();
     $data = [
         "user" => $user,
@@ -95,4 +89,13 @@ Route::get("leave-request-summary-type/user/{user_id}", function ($user_id) {
         "leave_requests" => $leave_requests,
     ];
     return $data;
+});
+
+
+Route::get('movie', function () {
+    $movies = Movie::withSum('orderlines', 'quantity')
+        ->orderBy('orderlines_sum_quantity', 'desc')
+        ->limit(10)
+        ->get();
+    return $movies;
 });
