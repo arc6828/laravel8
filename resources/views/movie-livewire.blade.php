@@ -1,3 +1,3 @@
 <x-bootstrap-livewire title="Shop Livewire">
-    <livewire:shop />
+    <livewire:movie-livewire />
 </x-bootstrap-livewire>

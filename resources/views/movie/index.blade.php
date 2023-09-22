@@ -52,7 +52,7 @@
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="checkbox"
-                                                                        value="{{ $c->id }}" name="category_id[]" {{ in_array($loop->iteration, request('category_id',[])) ? "checked" : "" }}
+                                                                        value="{{ $c->id }}" name="category_ids[]" {{ in_array($loop->iteration, request('category_ids',[])) ? "checked" : "" }}
                                                                         >
                                                                     <label class="form-check-label"> {{ $c->name }}
                                                                     </label>

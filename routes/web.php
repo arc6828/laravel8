@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
+use App\Http\Livewire\MovieLivewire;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -140,18 +141,17 @@ Route::middleware(['auth'])->group(function () {
 Route::get("counter", function () {
     return view("counter");
 });
-Route::get("shop", function () {
-    return view("shop");
-});
-Route::get("shop-livewire", function () {
-    return view("shop-livewire");
-});
+
 
 // Route::resource('movie', 'MovieController');
 // Route::resource('category', 'CategoryController');
 Route::resource('movie', MovieController::class);
 Route::resource('category', CategoryController::class);
 
-Route::get('movie2', function(Request $request){
+Route::get("movie-livewire", function () {
+    return view("movie-livewire");
+});
+
+Route::get('movie2', function (Request $request) {
     return $request->get('category_id');
 });
