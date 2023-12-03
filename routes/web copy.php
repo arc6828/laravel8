@@ -45,7 +45,7 @@ Route::get('/', function () {
 use App\Models\Task;
  
 Route::get('/tasks', function () {
-    return view('tasks', ['tasks' => Task::all()]);
+    // return view('tasks', ['tasks' => Task::all()]);
 });
 ?>
 Hello, {{ $name }}.

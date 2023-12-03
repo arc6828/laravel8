@@ -8,6 +8,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\OrderlineController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 use App\Http\Livewire\MovieLivewire;
@@ -222,3 +223,7 @@ Route::post('study-match', function (Request $request) {
 
     return view("study/match", compact('codes','values','majors'));
 })->name('study-match');
+
+
+Route::get("study-question2", [ QuizController::class, "question" ])->name("study-question2");
+Route::get("study-match2", [ QuizController::class, "match" ])->name("study-match2");
