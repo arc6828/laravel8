@@ -35,16 +35,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/teacher" , function (){
+Route::get("/teacher", function () {
     return view("teacher");
 });
 
-Route::get("/student" , function (){
+Route::get("/student", function () {
     return view("student");
 });
 
-Route::get("/theme" , function (){
-	return view("theme");
+Route::get("/theme", function () {
+    return view("theme");
 });
 
 
@@ -117,7 +117,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('quotation-detail', QuotationDetailController::class);
 });
 
-
 Route::get('/test/pdf', function () {
     $a = "hello";
     $b = "world";
@@ -166,3 +165,60 @@ Route::get("movie-livewire", function () {
 Route::get('movie2', function (Request $request) {
     return $request->get('category_id');
 });
+
+
+// books
+
+
+// question
+Route::get('study-question', function () {
+    $questions = json_decode(file_get_contents("https://raw.githubusercontent.com/arc6828/cs/master/json/sci-mbti.json"));
+    // shuffle($questions);
+    return view("study/question", compact('questions'));
+})->name('study-question');
+
+Route::post('study-match', function (Request $request) {
+    $summary = [
+        "CS" => 0,
+        "IT" => 0,
+        "DISE" => 0,
+        "HE" => 0,
+        "NU" => 0,
+        "FB" => 0,
+        "SET" => 0,
+        "OHS" => 0,
+    ];
+    $majors = [
+        "CS" => "วิทยาการคอมพิวเตอร์ (CS)",
+        "IT" => "เทคโนโลยีสารสนเทศ (IT)",
+        "DISE" => "นวัตกรรมดิจิทัลและวิศวกรรมซอฟต์แวร์ (DISE)",
+        "HE" => "คหกรรมศาสตร์ (HE)",
+        "NU" => "โภชนาการและการกำหนดอาหาร (NU)",
+        "FB" => "นวัตกรรมอาหารและเครื่องดื่มเพื่อสุขภาพ (FB)",
+        "SET" => "วิทยาศาสตร์และเทคโนโลยีสิ่งแวดล้อม (SET)",
+        "OHS" => "อาชีวอนามัยและความปลอดภัย (OHS)",
+    ];
+    // print_r($_POST);
+    // for ($i = 1; $i <= count($_POST); $i++) {
+    foreach ($_POST as $key => $value) {
+        if(!str_contains($key, "flexRadioDefault")) continue;
+        // echo $_POST["flexRadioDefault" . $i] . "<br>";
+        [$code, $answer] = explode("-", $value);
+        if ($answer == "yes") {
+            // if-yes
+            $summary[$code] = isset($summary[$code]) ? $summary[$code] + 1 : 1;
+        } else {
+            // if-no
+            $summary[$code] = isset($summary[$code]) ? $summary[$code] + 0 : 0;
+        }
+    }
+    // print_r($summary);
+    $codes = array_keys($summary);
+    $values = array_values($summary);
+
+    // print_r($summary);
+    // print_r($codes);
+    // print_r($values);
+
+    return view("study/match", compact('codes','values','majors'));
+})->name('study-match');

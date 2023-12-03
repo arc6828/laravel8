@@ -38,3 +38,63 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/', function () {
+    return view('greeting', ['name' => 'Finn']);
+});
+
+use App\Models\Task;
+ 
+Route::get('/tasks', function () {
+    return view('tasks', ['tasks' => Task::all()]);
+});
+?>
+Hello, {{ $name }}.
+
+<!-- resources/views/components/layout.blade.php -->
+ 
+<html>
+    <head>
+        <title>{{ $title ?? 'Todo Manager' }}</title>
+    </head>
+    <body>
+        <h1>Todos</h1>
+        <hr/>
+        {{ $slot }}
+    </body>
+</html>
+
+<!-- resources/views/tasks.blade.php -->
+ 
+<x-layout>
+    <x-slot name="title">
+        Custom Title
+    </x-slot>
+    @foreach ($tasks as $task)
+        {{ $task }}
+    @endforeach
+</x-layout>
+
+
+<!-- resources/views/layouts/app.blade.php --> 
+<html>
+    <head>
+        <title>@yield('title')</title>
+    </head>
+    <body>
+        <h1>@yield('title')</h1>
+        <hr/>
+        @yield('content')
+    </body>
+</html>
+
+<!-- resources/views/tasks.blade.php -->
+ 
+@extends('layouts.app')
+ 
+@section('title', 'Page Title')
+
+@section('content')
+    @foreach ($tasks as $task)
+        {{ $task }}
+    @endforeach
+@endsection
